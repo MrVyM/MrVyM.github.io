@@ -1,6 +1,7 @@
 ---
-id: merveilleux-monde-de-make
+slug: merveilleux-monde-de-make
 title: Le merveilleux Monde de Make 
+tags: [make, c, c++, criterion]
 ---
 # Le merveilleux monde de Make
 
