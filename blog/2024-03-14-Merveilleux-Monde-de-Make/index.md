@@ -1,14 +1,16 @@
 ---
 slug: merveilleux-monde-de-make
 title: Le merveilleux Monde de Make 
+authors: [mrvym]
 tags: [make, c, c++, criterion]
 ---
 # Le merveilleux monde de Make
 
 Les Makefiles constituent un outil essentiel dans le développement de logiciels que ce soit en C/C++ ou autre. Ils permettent une gestion efficace des projets en automatisant le processus de compilation, de nettoyage et de tests. 
 
-Dans cet article, nous explorerons les bonnes pratiques pour la création et l'utilisation de Makefiles dans des projets C quelque soit leurs complexites.
+Dans cet article, nous explorerons les bonnes pratiques pour la création et l'utilisation de Makefiles dans des projets C quelque soit leurs complexités.
 
+<!-- truncate -->
 ### Make, ca sert a quoi ?
 
 Make est un programme qui a pour but de générer des fichier. Il permet de générer des pdfs, des exécutables et bien plus.
