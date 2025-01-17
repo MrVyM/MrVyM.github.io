@@ -41,7 +41,7 @@ const config: Config = {
             type: 'all',
             xslt: true,
           },
-          editUrl: 'https://mrvym.github.io/blog',
+          editUrl: 'https://mrvym.github.io/blog/pages',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
