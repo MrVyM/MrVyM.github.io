@@ -1,7 +1,10 @@
 ---
 draft: true
+date: 2029-01-01 
 ---
 # Sleep from Python to Electronics
+
+<!-- truncate --> 
 ## Python
 ```py
 import time

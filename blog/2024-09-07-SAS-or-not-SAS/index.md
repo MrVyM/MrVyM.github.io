@@ -1,6 +1,17 @@
-
+---
+slug: sas-or-not-sas 
+title: "Disque dur : SAS, SATA, SCSI ou IDE ?"
+tags:
+- SSD
+- SAS
+- Hardware
+- Storage 
+hide_title: false
+date: 2024-11-07
+---
 Notre but dans cet article est de mieux comprendre le concept des interfaces matérielles / programmation, des couches physiques et des jeux de commandes, et plus simplement des systèmes de stockage qui nous entourent.
 
+<!-- truncate --> 
 Mais d'abord, un "rapide" récapitulatif de l'état actuel de nos périphériques de stockage :
 
 | Norme de stockage  | Interface matérielle        | Couche physique                          | Jeux de commandes                  |

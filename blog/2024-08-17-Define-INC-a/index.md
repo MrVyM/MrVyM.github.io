@@ -1,3 +1,12 @@
+---
+slug: define-inc-a
+title: "#define INC(a) INC(a+1)" 
+tags:
+- define  
+- C
+- macro
+hide_title: false
+---
 Le but de cet article est de vous faire découvrir le magnifique univers des macros en C.
 
 # Une directive préprocesseur
@@ -10,6 +19,7 @@ Petit point historique :
 > Cependant, avant cette standardisation, les macros faisaient déjà partie du langage C classique (ou K&R C) utilisé dans les années 1970. 
 > Le compilateur C original, développé par Dennis Ritchie pour le système d'exploitation UNIX, incluait déjà une forme rudimentaire de macros via le préprocesseur, permettant des définitions avec #define.
 
+<!-- truncate --> 
 # Define 
 ```c
 #define SENS_DE_LA_VIE 3.14
