@@ -35,19 +35,21 @@ const config: Config = {
     [
       'classic',
       {
+        docs: false,
         blog: {
-          showReadingTime: true,
           feedOptions: {
-            type: ['rss', 'atom'],
+            type: 'all',
             xslt: true,
           },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl: 'https://github.com/mrvym/blog/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
+
+          showReadingTime: true,
+          readingTime: ({content, frontMatter, defaultReadingTime}) =>
+            defaultReadingTime({content, options: {wordsPerMinute: 300}}),
         },
         theme: {
           customCss: './src/css/custom.css',
