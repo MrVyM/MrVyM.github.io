@@ -27,8 +27,8 @@ const config: Config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['fr', 'en'],
+    defaultLocale: 'fr',
+    locales: ['fr'],
   },
 
   presets: [
@@ -46,6 +46,9 @@ const config: Config = {
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
+
+          blogSidebarTitle: 'All posts',
+          blogSidebarCount: 'ALL',
 
           showReadingTime: true,
           readingTime: ({content, frontMatter, defaultReadingTime}) =>
