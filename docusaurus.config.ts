@@ -10,7 +10,7 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://mrvym.github.io/',
+  url: 'https://blog.marticou.com/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/blog',
@@ -41,7 +41,7 @@ const config: Config = {
             type: 'all',
             xslt: true,
           },
-          editUrl: 'https://mrvym.github.io/blog/pages',
+          editUrl: 'https://blog.marticou.com/blog/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
