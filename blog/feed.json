@@ -27,6 +27,10 @@
             "title": "Tester c'est tricher, compiler c'est douter",
             "summary": "Dans cet article, nous allons voir le concept de Continuous Integration (CI), son interet et ses inconevnients",
             "date_modified": "2025-01-10T00:00:00.000Z",
+            "author": {
+                "name": "Vianney Marticou",
+                "url": "https://github.com/mrvym"
+            },
             "tags": [
                 "c",
                 "git",
@@ -40,6 +44,10 @@
             "title": "Introduction à Terraform avec Proxmox",
             "summary": "Le but de Terraform est de déployer une infrastructure ou une entité de manière idempotente. Cela signifie que l’on doit pouvoir relancer le script 100 fois et obtenir le même résultat à chaque exécution.",
             "date_modified": "2024-12-02T00:00:00.000Z",
+            "author": {
+                "name": "Vianney Marticou",
+                "url": "https://github.com/mrvym"
+            },
             "tags": [
                 "terraform",
                 "proxmox",
@@ -55,6 +63,10 @@
             "title": "Disque dur : SAS, SATA, SCSI ou IDE ?",
             "summary": "Notre but dans cet article est de mieux comprendre le concept des interfaces matérielles / programmation, des couches physiques et des jeux de commandes, et plus simplement des systèmes de stockage qui nous entourent.",
             "date_modified": "2024-11-07T00:00:00.000Z",
+            "author": {
+                "name": "Vianney Marticou",
+                "url": "https://github.com/mrvym"
+            },
             "tags": [
                 "SSD",
                 "SAS",
@@ -69,6 +81,10 @@
             "title": "#define INC(a) INC(a+1)",
             "summary": "Le but de cet article est de vous faire découvrir le magnifique univers des macros en C.",
             "date_modified": "2024-08-17T00:00:00.000Z",
+            "author": {
+                "name": "Vianney Marticou",
+                "url": "https://github.com/mrvym"
+            },
             "tags": [
                 "define",
                 "C Language",
