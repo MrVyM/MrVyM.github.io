@@ -85,3 +85,20 @@
   border-left: 4px solid var(--ifm-color-primary-darkest);
   padding-left: 6px;
 }
+
+input[type="checkbox"] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1em;
+  height: 1em;
+  border: 0.1em solid currentColor;
+  border-radius: 0.1em;
+}
+
+input[type="checkbox"]:checked { 
+  content: "X";
+  background-color: #72dd94;
+}
