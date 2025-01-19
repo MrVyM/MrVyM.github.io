@@ -469,20 +469,6 @@ Donc, conclusion : <strong>RTFM</strong>.</p>
             <category>macro</category>
         </item>
         <item>
-            <title><![CDATA[How to code plot and chart in Docusaurus with MDX]]></title>
-            <link>https://blog.marticou.com/posts/blog/plot-chart-docusaurus-mdx</link>
-            <guid>https://blog.marticou.com/posts/blog/plot-chart-docusaurus-mdx</guid>
-            <pubDate>Thu, 01 Aug 2024 00:00:00 GMT</pubDate>
-            <description><![CDATA[Dans cet article, nous explorons comment ajouter des graphiques interactifs dans une page MDX avec Docusaurus.]]></description>
-            <content:encoded><![CDATA[<p>Dans cet article, nous explorons comment ajouter des graphiques interactifs dans une page MDX avec <strong>Docusaurus</strong>.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="exemple-de-graphique-interactif">Exemple de graphique interactif<a href="https://blog.marticou.com/posts/blog/plot-chart-docusaurus-mdx#exemple-de-graphique-interactif" class="hash-link" aria-label="Lien direct vers Exemple de graphique interactif" title="Lien direct vers Exemple de graphique interactif">​</a></h2>
-<p>Voici un graphique interactif réalisé avec <code>@site/static</code> pour les données.</p>
-<!-- -->
-<canvas role="img" height="150" width="300"></canvas>]]></content:encoded>
-            <category>react</category>
-            <category>mdx</category>
-        </item>
-        <item>
             <title><![CDATA[Le Merveilleux Monde de Make]]></title>
             <link>https://blog.marticou.com/posts/blog/merveilleux-monde-de-make</link>
             <guid>https://blog.marticou.com/posts/blog/merveilleux-monde-de-make</guid>

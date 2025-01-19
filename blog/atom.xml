@@ -488,24 +488,6 @@ Donc, conclusion : <strong>RTFM</strong>.</p>
         <category label="macro" term="macro"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[How to code plot and chart in Docusaurus with MDX]]></title>
-        <id>https://blog.marticou.com/posts/blog/plot-chart-docusaurus-mdx</id>
-        <link href="https://blog.marticou.com/posts/blog/plot-chart-docusaurus-mdx"/>
-        <updated>2024-08-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Dans cet article, nous explorons comment ajouter des graphiques interactifs dans une page MDX avec Docusaurus.]]></summary>
-        <content type="html"><![CDATA[<p>Dans cet article, nous explorons comment ajouter des graphiques interactifs dans une page MDX avec <strong>Docusaurus</strong>.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="exemple-de-graphique-interactif">Exemple de graphique interactif<a href="https://blog.marticou.com/posts/blog/plot-chart-docusaurus-mdx#exemple-de-graphique-interactif" class="hash-link" aria-label="Lien direct vers Exemple de graphique interactif" title="Lien direct vers Exemple de graphique interactif">​</a></h2>
-<p>Voici un graphique interactif réalisé avec <code>@site/static</code> pour les données.</p>
-<!-- -->
-<canvas role="img" height="150" width="300"></canvas>]]></content>
-        <author>
-            <name>Vianney Marticou</name>
-            <uri>https://github.com/mrvym</uri>
-        </author>
-        <category label="react" term="react"/>
-        <category label="mdx" term="mdx"/>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Le Merveilleux Monde de Make]]></title>
         <id>https://blog.marticou.com/posts/blog/merveilleux-monde-de-make</id>
         <link href="https://blog.marticou.com/posts/blog/merveilleux-monde-de-make"/>
