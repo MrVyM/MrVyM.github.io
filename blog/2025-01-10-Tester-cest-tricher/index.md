@@ -7,6 +7,7 @@ tags:
 - CI 
 hide_title: false
 date: 2025-01-10 
+authors: [mrvym] 
 ---
 # Tester c'est tricher, compiler c'est douter
 Dans cet article, nous allons voir le concept de Continuous Integration (CI), son interet et ses inconevnients

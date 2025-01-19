@@ -7,6 +7,7 @@ tags:
 - devops
 - hcl
 - BPG 
+authors: [mrvym] 
 hide_title: false
 date: 2024-12-02 
 ---

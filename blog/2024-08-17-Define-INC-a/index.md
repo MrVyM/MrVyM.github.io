@@ -6,6 +6,7 @@ tags:
 - C
 - macro
 hide_title: false
+authors: [mrvym] 
 ---
 Le but de cet article est de vous faire découvrir le magnifique univers des macros en C.
 
