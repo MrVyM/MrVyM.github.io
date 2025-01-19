@@ -13,12 +13,12 @@ const config: Config = {
   url: 'https://blog.marticou.com/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/blog',
+  baseUrl: '/posts',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'mrvym', // Usually your GitHub org/user name.
-  projectName: 'blog', // Usually your repo name.
+  projectName: 'posts', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -41,7 +41,7 @@ const config: Config = {
             type: 'all',
             xslt: true,
           },
-          editUrl: 'https://blog.marticou.com/blog/',
+          editUrl: 'https://blog.marticou.com/posts/blog',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
