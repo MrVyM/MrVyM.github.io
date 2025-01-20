@@ -73,7 +73,7 @@ const config: Config = {
       items: [
         {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/mrvym/blog',
+          href: 'https://github.com/mrvym/',
           label: 'GitHub',
           position: 'right',
         },
@@ -85,18 +85,6 @@ const config: Config = {
         {
           title: 'Community',
           items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
           ],
         },
         {
@@ -105,6 +93,14 @@ const config: Config = {
             {
               label: 'Blog',
               to: '/blog',
+            },
+            {
+              label: 'Archive',
+              to: '/archive',
+            },
+            {
+              label: 'Tags',
+              to: '/tags',
             },
             {
               label: 'GitHub',
