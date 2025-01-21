@@ -48,6 +48,7 @@ const config: Config = {
           onUntruncatedBlogPosts: 'warn',
 
           blogSidebarTitle: 'All posts',
+          routeBasePath: '/',
           blogSidebarCount: 'ALL',
 
           showReadingTime: true,
