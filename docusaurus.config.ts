@@ -109,7 +109,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} blog.mrvym.dev, Inc. Thanks to Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} blog.mrvym.dev, Inc. Thanks to <href link="https://docusaurus.io/">Docusaurus.</href>`,
     },
     prism: {
       theme: prismThemes.github,

@@ -6,6 +6,7 @@ tags:
 - C 
 - segv
 hide_title: false
+draft: true
 authors: [mrvym] 
 ---
 Dans cette article, on va voir comment faire un code qui crash le plus efficacement possible. 
@@ -16,9 +17,9 @@ Une magnifique occasion de faire de l'assembleur !
 Sans plus attendre, voici notre premier exemple : 
 <!-- truncate --> 
 ```c
-int main;
+main;
 ```
-Il compile parfaitement et sans aucun warning.
+Il compile trés bien. 
 > gcc main.c -o main
 
 et produit cet output
@@ -30,6 +31,8 @@ $ ./main
 
 ### Un segfault
 Je pense que c'est le bon moment, c'est quoi un segfault ? 
+
+TODO : Explication 
 
 ## On dump des obj 
 Pour mieux comprendre le fonctionnement du programme, on va allez voir le code machine. 
@@ -47,12 +50,14 @@ $ objdump -t ./main
 ```
 On remarque le symbol `main` est dans le segment `.bss` et pas dans `.text`.
 
+![Segments in ELF file](./segment-c-code.png)
+
 Segment Bss : 
 > Block starting symbol (abbreviated to .bss or bss) is the portion of an object file, executable, or assembly language code that contains statically allocated variables
+
 Segment Text :
 > Text segment or simply as text, is a portion of an object file or the corresponding section of the program's virtual address space that contains executable instructions
 
-TODO : Segment 
 
 On rend compte que notre code ne declare pas une fonction mais bien une variable. La variable etant global le compilateur cree un symbole pour elle.
 Cela se verifie tres simplement en rajoutant une variable `test` dans notre code. 
@@ -124,10 +129,25 @@ Pour resumer, on :
     xor %eax, %eax   
     call _exit      
 
-<details>
-<summary>La vraie fonction _start</summary>
-Allez bonne chance 
+### Envp ?? 
+Le vrai prototype de la fonction main a 3 arguments. 
+```c
+int main(int argc, char* argv[], char* envp[]);
+```
+> Oui, j'ai vraiment decouvert le vrai prototype de la fonction main en faisant le reverse de la '_start'.
 
+Vous pouvez vous en doutez avec le nom, ce sont les variables d'environment du shell.
+Si on ne vous a jamais montré cela, c'est parce que ce n'est pas portable (meme si toute les machines actuels le supportent).
+
+
+Source : 
+- [The C Runtime Initialization, crt0.o](https://www.embecosm.com/appnotes/ean9/html/ch05s02.html)
+
+### Bonus
+
+Pour les chads ! Voici le code complet de la fonction `_start`.
+
+<details>
 ```asm
 0000000000001020 <_start>:
     1020:	f3 0f 1e fa          	endbr64
@@ -196,16 +216,3 @@ Allez bonne chance
     1114:	e9 67 ff ff ff       	jmp    1080 <_start+0x60>
 ```
 </details>
-
-### Envp ?? 
-Et oui, le vrai prototype de la fonction main est 
-```c
-int main(int argc, char* argv[], char* envp[]);
-```
-
-Vous pouvez vous en doutez avec le nom, ce sont les variables d'environment du shell.
-Si on ne vous a jamais montré cela, c'est parce que ce n'est pas POSIX (meme si toute les machines actuels le supportent).
-
-
-Source : 
-- [The C Runtime Initialization, crt0.o](https://www.embecosm.com/appnotes/ean9/html/ch05s02.html)
