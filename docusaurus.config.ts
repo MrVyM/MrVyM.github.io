@@ -95,14 +95,6 @@ const config: Config = {
               to: '/blog',
             },
             {
-              label: 'Archive',
-              to: '/archive',
-            },
-            {
-              label: 'Tags',
-              to: '/tags',
-            },
-            {
               label: 'GitHub',
               href: 'https://github.com/facebook/docusaurus',
             },
