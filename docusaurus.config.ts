@@ -44,8 +44,8 @@ const config: Config = {
           editUrl: 'https://github.com/MrVyM',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
+          onInlineAuthors: 'throw',
+          onUntruncatedBlogPosts: 'throw',
 
           blogSidebarTitle: 'All posts',
           routeBasePath: '/',
