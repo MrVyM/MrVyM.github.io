@@ -72,7 +72,7 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
-        {to: '/blog', label: 'Blog', position: 'left'},
+        {to: '/', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/mrvym/',
           label: 'GitHub',
