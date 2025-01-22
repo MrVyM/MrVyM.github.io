@@ -519,8 +519,8 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
         </item>
         <item>
             <title><![CDATA[IDEA / TODO / SUBJECT]]></title>
-            <link>https://blog.marticou.com/2030/01/01/TODO</link>
-            <guid>https://blog.marticou.com/2030/01/01/TODO</guid>
+            <link>https://blog.marticou.com/1970/01/01/TODO</link>
+            <guid>https://blog.marticou.com/1970/01/01/TODO</guid>
             <pubDate>Thu, 01 Jan 1970 00:00:00 GMT</pubDate>
             <description><![CDATA[Pour les curieux, en recherche du sujet d'exploration]]></description>
             <content:encoded><![CDATA[<p>Pour les curieux, en recherche du sujet d'exploration</p>
@@ -528,7 +528,7 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
 <li class="task-list-item"><input type="checkbox" disabled="" checked=""> <!-- -->Fait</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Libre</li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="hardware">Hardware<a href="https://blog.marticou.com/2030/01/01/TODO#hardware" class="hash-link" aria-label="Lien direct vers Hardware" title="Lien direct vers Hardware">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="hardware">Hardware<a href="https://blog.marticou.com/1970/01/01/TODO#hardware" class="hash-link" aria-label="Lien direct vers Hardware" title="Lien direct vers Hardware">​</a></h2>
 <ul class="contains-task-list containsTaskList_mC6p">
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->I2C</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->SPI</li>
@@ -539,7 +539,7 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->STM32</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->InfintyBand</li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="toolchain">Toolchain<a href="https://blog.marticou.com/2030/01/01/TODO#toolchain" class="hash-link" aria-label="Lien direct vers Toolchain" title="Lien direct vers Toolchain">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="toolchain">Toolchain<a href="https://blog.marticou.com/1970/01/01/TODO#toolchain" class="hash-link" aria-label="Lien direct vers Toolchain" title="Lien direct vers Toolchain">​</a></h2>
 <ul class="contains-task-list containsTaskList_mC6p">
 <li class="task-list-item"><input type="checkbox" disabled="" checked=""> <!-- -->Make</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Autotools</li>
@@ -548,7 +548,7 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Interpeter</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->JIT</li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="deploy">Deploy<a href="https://blog.marticou.com/2030/01/01/TODO#deploy" class="hash-link" aria-label="Lien direct vers Deploy" title="Lien direct vers Deploy">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="deploy">Deploy<a href="https://blog.marticou.com/1970/01/01/TODO#deploy" class="hash-link" aria-label="Lien direct vers Deploy" title="Lien direct vers Deploy">​</a></h2>
 <ul class="contains-task-list containsTaskList_mC6p">
 <li class="task-list-item"><input type="checkbox" disabled="" checked=""> <!-- -->CI</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->CD</li>
@@ -561,7 +561,7 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Valgrand</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Salt</li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="linux">Linux<a href="https://blog.marticou.com/2030/01/01/TODO#linux" class="hash-link" aria-label="Lien direct vers Linux" title="Lien direct vers Linux">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="linux">Linux<a href="https://blog.marticou.com/1970/01/01/TODO#linux" class="hash-link" aria-label="Lien direct vers Linux" title="Lien direct vers Linux">​</a></h2>
 <ul class="contains-task-list containsTaskList_mC6p">
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Dual Boot</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Arch Install</li>
@@ -574,14 +574,14 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->BSD</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Opensense vs Pfsense</li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="vim">Vim<a href="https://blog.marticou.com/2030/01/01/TODO#vim" class="hash-link" aria-label="Lien direct vers Vim" title="Lien direct vers Vim">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="vim">Vim<a href="https://blog.marticou.com/1970/01/01/TODO#vim" class="hash-link" aria-label="Lien direct vers Vim" title="Lien direct vers Vim">​</a></h2>
 <ul class="contains-task-list containsTaskList_mC6p">
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Motion</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Simple config</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->LSP</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Simple syntax plugin</li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="proxmox">Proxmox<a href="https://blog.marticou.com/2030/01/01/TODO#proxmox" class="hash-link" aria-label="Lien direct vers Proxmox" title="Lien direct vers Proxmox">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="proxmox">Proxmox<a href="https://blog.marticou.com/1970/01/01/TODO#proxmox" class="hash-link" aria-label="Lien direct vers Proxmox" title="Lien direct vers Proxmox">​</a></h2>
 <ul class="contains-task-list containsTaskList_mC6p">
 <li class="task-list-item"><input type="checkbox" disabled="" checked=""> <!-- -->IAC</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Virtual Network + Namespace Linux</li>
@@ -589,7 +589,7 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->VM</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->FS (btrfs / ext4 / zfs)</li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="protocole">Protocole<a href="https://blog.marticou.com/2030/01/01/TODO#protocole" class="hash-link" aria-label="Lien direct vers Protocole" title="Lien direct vers Protocole">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="protocole">Protocole<a href="https://blog.marticou.com/1970/01/01/TODO#protocole" class="hash-link" aria-label="Lien direct vers Protocole" title="Lien direct vers Protocole">​</a></h2>
 <ul class="contains-task-list containsTaskList_mC6p">
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->UDP / TCP</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->WebSocket</li>
@@ -598,7 +598,7 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->mTLS</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Oauth2</li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="utils">Utils<a href="https://blog.marticou.com/2030/01/01/TODO#utils" class="hash-link" aria-label="Lien direct vers Utils" title="Lien direct vers Utils">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="utils">Utils<a href="https://blog.marticou.com/1970/01/01/TODO#utils" class="hash-link" aria-label="Lien direct vers Utils" title="Lien direct vers Utils">​</a></h2>
 <ul class="contains-task-list containsTaskList_mC6p">
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->openssl</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->cat / head / tail</li>
@@ -607,7 +607,7 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->netplan</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->systemd</li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="ia">IA<a href="https://blog.marticou.com/2030/01/01/TODO#ia" class="hash-link" aria-label="Lien direct vers IA" title="Lien direct vers IA">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="ia">IA<a href="https://blog.marticou.com/1970/01/01/TODO#ia" class="hash-link" aria-label="Lien direct vers IA" title="Lien direct vers IA">​</a></h2>
 <ul class="contains-task-list containsTaskList_mC6p">
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->NLP</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Computer Vision</li>
@@ -615,7 +615,7 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Reseau de neurones convolutif</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Perceptron (Les bases de l'ia)</li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rabbit-hole">Rabbit Hole<a href="https://blog.marticou.com/2030/01/01/TODO#rabbit-hole" class="hash-link" aria-label="Lien direct vers Rabbit Hole" title="Lien direct vers Rabbit Hole">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rabbit-hole">Rabbit Hole<a href="https://blog.marticou.com/1970/01/01/TODO#rabbit-hole" class="hash-link" aria-label="Lien direct vers Rabbit Hole" title="Lien direct vers Rabbit Hole">​</a></h2>
 <ul class="contains-task-list containsTaskList_mC6p">
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->OIDC</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Blockchain</li>
