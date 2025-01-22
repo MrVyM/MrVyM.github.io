@@ -32,15 +32,15 @@
 
 .table-of-contents {
   position: sticky;
-  top: 20px; /* Reste visible en haut de l'écran lors du scroll */
+  top: 20px;
   padding: 20px;
   border-radius: 8px;
   border: 1px solid var(--ifm-color-primary-lighter);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  font-size: 0.95rem;
+  font-size: calc(0.85rem + 0.1vw); /* Ajustement dynamique de la taille de police */
   color: var(--ifm-color-primary-darkest);
-  max-height: calc(100vh - 40px); /* Préserve l'espace vertical */
-  overflow-y: auto; /* Ajoute un scroll interne si le contenu est trop long */
+  max-height: calc(100vh - 40px);
+  overflow: hidden; /* Empêche la barre de scroll */
 }
 
 .table-of-contents h2 {
@@ -60,9 +60,8 @@
 }
 
 .table-of-contents ul li {
-  margin: 10px 0;
+  margin: calc(8px - 0.5vw) 0; /* Réduction dynamique des marges */
 }
-
 .table-of-contents ul li a {
   text-decoration: none;
   padding: 5px 10px;

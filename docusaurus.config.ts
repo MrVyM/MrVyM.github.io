@@ -41,7 +41,7 @@ const config: Config = {
             type: 'all',
             xslt: true,
           },
-          editUrl: 'https://blog.marticou.com/',
+          editUrl: 'https://github.com/MrVyM',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
