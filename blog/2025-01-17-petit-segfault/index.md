@@ -32,7 +32,12 @@ $ ./main
 ### Un segfault
 Je pense que c'est le bon moment, c'est quoi un segfault ? 
 
-TODO : Explication 
+Un segfault ou segmentation fault est une erreur de segmentation. Nous l'avons lorsque que notre programme essaye de lire un pointeur qui ne nous appartient pas. 
+Au lancement du programme, l'OS lui attribue une certaine quantité de mémoire et il n'a pas le droit d'en sortir.
+
+C'est une sécurité pour que des programmes ne puissent pas aller voir ailleurs.
+
+Lorsque l'OS (pour etre precis, le MMU) voit que le programme essaye d'acceder a la memoire, il genere cette fault.
 
 ## On dump des obj 
 Pour mieux comprendre le fonctionnement du programme, on va allez voir le code machine. 
@@ -91,7 +96,7 @@ void _start() {
 ## Lancement du programme
 Mais d'ailleurs, qui call le `main` ? 
 
-Cette fois ci, nous allons devoir regarder le code assembleur de notre code et plus specifiquement la fonction `_start`. 
+Cette fois ci, nous allons devoir regarder le code assembleur de notre code et plus spécifiquement la fonction `_start`. 
 Au passage, on remarque que son symbol est bien dans le segment `.text`.
 
 Ceci est un code simplifier parce que la fonction est assez complexe et longue.
