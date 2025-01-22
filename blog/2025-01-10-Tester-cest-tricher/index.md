@@ -17,7 +17,7 @@ Dans cet article, nous allons voir le concept de Continuous Integration (CI), so
 Mais d'abord, comme à mon habitude, un petit point histoire.
 
 > En 1999, Kent Beck a approfondi le sujet dans son premier livre sur l'Extreme Programming. En 2001, CruiseControl, l'un des premiers outils open-source de CI, a vu le jour.
-
+<!-- truncate --> 
 ## Mais why ?  
 Le but d'une CI est de faire des tests automatisés à chaque commit. Cela garantit que le code reste fonctionnel en permanence. On appelle cela une Continuous Integration car, à chaque modification, le code est vérifié pour s'assurer qu'il n'y a pas de régressions.
 
