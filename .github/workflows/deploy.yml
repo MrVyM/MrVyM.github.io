@@ -22,6 +22,9 @@ jobs:
       - name: Build site
         run: npm run build
 
+      - name: CNAME file
+        run: echo "blog.marticou.com" > build/CNAME
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
