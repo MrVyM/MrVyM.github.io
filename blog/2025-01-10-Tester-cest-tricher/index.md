@@ -2,9 +2,9 @@
 title: Tester c'est tricher, compiler c'est douter
 slug: /tester-cest-tricher
 tags:
-- c
 - git
 - CI 
+- C
 hide_title: false
 date: 2025-01-10 
 authors: [mrvym] 
