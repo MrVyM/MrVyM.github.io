@@ -1,7 +1,7 @@
 ---
 slug: petit-segfault
 title: Le plus petit segfault
-description: Coucou
+description: Coder le plus petit segfault du monde ! Et creusez dans le fonctionnement de GCC.
 tags:
 - C 
 - segv
@@ -115,7 +115,7 @@ _start:
     call _exit      
 ```
 
-Le symbol `_start` est le point d'entrée du programme, il n'est pas toujours a la meme addresse. Elle est definie par le programme `ld`.
+Le symbol `_start` est le point d'entrée du programme, il n'est pas toujours a la meme addresse. Son addresse est definie `ld` et on peut trouver la fonction dans le fichier `Scrt1.o`.
 Pour resumer, on :
 - marque la fin de la stack frame
     > xor %ebp, %ebp            
@@ -145,12 +145,85 @@ Vous pouvez vous en doutez avec le nom, ce sont les variables d'environment du s
 Si on ne vous a jamais montré cela, c'est parce que ce n'est pas portable (meme si toute les machines actuels le supportent).
 
 
+## Encore plus petit 
+Et oui, si vous avez bien suivi, il est maintenant possible de segfault encore plus vite le programme. Il suffit que le segfault ne soit pas dans la fonction `main` mais dans la fonction `_start`. 
+
+On a vu comment faire pour coder notre propre fonction `_start`. Vous vous dites surement que cela va etre compliqué de coder une fonction `_start` en moins de 5 caracteres.
+Mais comme dit si bien Mr.Ping dans Kung Fu Panda.
+> Le secret du bonheur, c’est qu’il n’y a pas d’ingrédient secret.
+
+Et oui, il suffit de ne rien mettre dans le fichier source.
+
+```sh
+$ touch main.c
+/usr/bin/ld: warning: cannot find entry symbol _start; defaulting to 0000000000001000
+$ gcc -o main main.c -nostartfiles
+```
+Nous avons certes un warning mais ca compile.
+Un `objdump` nous permet de voir qu'il n'y a globalement rien dans ce fichier et que le symbole `_start` n'est pas defini.
+
+```sh
+$ objdump -t ./main
+<-- truncate --> 
+0000000000000000         *UND*	0000000000000000 _start
+```
+## Scrt1.o ca sort d'ou ?
+
+Alors hormis le fait que j'ai lu la doc de GCC, comment est-ce que je sais que Scrt1.o existe ? 
+Vous connaissez le `-v` ? Et oui, on peut très bien activé le debug / verbose sur GCC.
+
+Personne le fait parce qu'il faut avoir un sacré melon pour considérer que GCC fait mal son travail (sauf moi).
+
+En activant ce flag, on se retrouve avec pas mal de variable d'env qui sont print mais pas que. On trouve notamment cette ligne dans laquel on voit l'include des fichiers `.o`.
+
+```sh
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/collect2 
+    -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/liblto_plugin.so 
+    -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/lto-wrapper 
+    -plugin-opt=-fresolution=/tmp/ccEcycpv.res 
+    -plugin-opt=-pass-through=-lgcc 
+    -plugin-opt=-pass-through=-lgcc_s 
+    -plugin-opt=-pass-through=-lc 
+    -plugin-opt=-pass-through=-lgcc 
+    -plugin-opt=-pass-through=-lgcc_s 
+    --build-id --eh-frame-hdr --hash-style=gnu 
+    -m elf_x86_64 
+    -dynamic-linker /lib64/ld-linux-x86-64.so.2 
+    -pie -o main 
+    /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/Scrt1.o 
+    /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/crti.o 
+    /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtbeginS.o 
+    -L/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1 
+    -L/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib 
+    -L/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../.. /tmp/cciOyF1Z.o 
+    -lgcc 
+    --push-state 
+    --as-needed 
+    -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s 
+    --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtendS.o 
+    /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/crtn.o
+```
+
+On remarque beaucoup de flags, on peut essayer d'analyser rapidement leur effet. 
+
+- Les amateurs de CTF, vous aurez remarquer le flag `-pie` qui permet d'activer l'address space layout randomization (ASLR). 
+- `-lgcc` est oui, votre programme C compile a la librairie dynamique GCC.
+   Vous pouvez le fait de compiler avec en faisant un `-nostdlib`. Je ne vois pas bien l'interet mais c'est un choix.
+-  `-m elf_x86_64`, c'est ici que GCC spécifie l'architecture de la machine cible
+   C'est possible de modifier cette machine cible, cela s'appelle la cross compilation (mais j'en ferai un article specifique)
+
+On trouve aussi le fichier `Scrt1.o` qui contient le point d'entrée (_start) de l'exécutable. Les fichiers `crti.o` et `crtbeginS.o` eux fournissent des routines nécessaires à l’initialisation des fonctions globales et statiques.
+On pourra citer la fonction `_init` et `_fini`.
+
+
 Source : 
 - [The C Runtime Initialization, crt0.o](https://www.embecosm.com/appnotes/ean9/html/ch05s02.html)
+- [Linux Questions - Forums](https://www.linuxquestions.org/questions/programming-9/_start-_init-and-frame_dummy-functions-810257/)
+- [Stackoverflow - _start in C](https://stackoverflow.com/questions/29694564/what-is-the-use-of-start-in-c)
 
 ### Bonus
 
-Pour les chads ! Voici le code complet de la fonction `_start`.
+Pour les **chads** ! Voici le code complet de la fonction `_start`.
 
 <details>
 ```asm
