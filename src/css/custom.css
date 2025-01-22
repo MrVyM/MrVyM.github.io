@@ -64,7 +64,6 @@
 }
 
 .table-of-contents ul li a {
-  color: var(--ifm-color-primary-darkest);
   text-decoration: none;
   padding: 5px 10px;
   border-radius: 5px;
@@ -72,14 +71,23 @@
   display: inline-block;
 }
 
+.table-of-contents li a:hover {
+  color: var(--ifm-color-primary-darkest);
+  transform: translateX(5px); /* Effet de décalage subtil */
+}
+
+.table-of-contents li a {
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
 .table-of-contents ul li a:hover {
-  background-color: var(--ifm-color-primary-light);
   color: var(--ifm-color-primary-darkest);
   transform: translateX(5px); /* Effet de décalage subtil */
 }
 
 .table-of-contents ul li a.active {
-  background-color: var(--ifm-color-primary);
   color: white;
   font-weight: bold;
   border-left: 4px solid var(--ifm-color-primary-darkest);
