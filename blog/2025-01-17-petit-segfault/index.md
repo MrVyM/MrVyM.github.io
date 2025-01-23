@@ -98,7 +98,7 @@ Mais d'ailleurs, qui call le `main` ?
 Cette fois ci, nous allons devoir regarder le code assembleur de notre code et plus spécifiquement la fonction `_start`. 
 Au passage, on remarque que son symbole est bien dans le segment `.text`.
 
-Ceci est un code simplifier parce que la fonction est assez complexe et longue.
+Le code a été simplifié, car la fonction complète est assez complexe et longue
 
 ```asm
 _start: 
