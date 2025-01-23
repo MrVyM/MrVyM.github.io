@@ -2,7 +2,7 @@
 draft: true
 date: 2029-01-01 
 title: Sleep from Python to Electronics
-description: 
+description: sleep
 slug: /sleep-from-python-to-electronics
 tags:
 - hardware
