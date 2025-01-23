@@ -95,7 +95,6 @@
 
 input[type="checkbox"] {
   appearance: none;
-  background-color: #fff;
   margin: 0;
   font: inherit;
   color: currentColor;
