@@ -54,13 +54,13 @@ const config: Config = {
             type: 'all',
             xslt: true,
           },
-          editUrl: 'https://github.com/MrVyM',
+          editUrl: 'https://github.com/MrVyM/MrVyM.github.io/issues',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'throw',
           onUntruncatedBlogPosts: 'throw',
 
-          blogSidebarTitle: 'All posts',
+          blogSidebarTitle: '...',
           routeBasePath: '/',
           blogSidebarCount: 'ALL',
 
@@ -110,7 +110,11 @@ const config: Config = {
               label: 'GitHub',
               href: 'https://github.com/MrVyM',
             },
-          ],
+            {
+              label: 'Contributing',
+              href: 'https://github.com/MrVyM/MrVyM.github.io/pulls',
+            },
+          ]
         },
         {
           title: 'More',
