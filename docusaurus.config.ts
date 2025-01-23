@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'MrVyM.dev',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Computer Sciences are cool',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -17,7 +17,7 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'mrvym', // Usually your GitHub org/user name.
+  organizationName: 'MrVyM', // Usually your GitHub org/user name.
   projectName: 'posts', // Usually your repo name.
 
   onBrokenLinks: 'warn',
@@ -86,9 +86,9 @@ const config: Config = {
       respectPrefersColorScheme: false,
     },
     navbar: {
-      title: 'blog.mrvym.dev',
+      title: 'Mr.VyM.dev',
       logo: {
-        alt: 'Mon blog',
+        alt: 'Tech Blog - Curiosities - Embedded Systems',
         src: 'img/logo.svg',
       },
       items: [
