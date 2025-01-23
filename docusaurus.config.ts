@@ -1,7 +1,6 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
-import ComputeReadingTime from './ComputeReadingTime';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -66,10 +65,10 @@ const config: Config = {
           blogSidebarCount: 'ALL',
 
           showReadingTime: true,
-          readingTime: ({content, frontMatter}) => {
+          readingTime: ({content, frontMatter, defaultReadingTime}) => {
             frontMatter.hide_reading_time
               ? undefined
-              : ComputeReadingTime({content, options: {wordsPerMinute: 300}});
+              : defaultReadingTime({content, options: {wordsPerMinute: 300}});
           },
         },
         theme: {
