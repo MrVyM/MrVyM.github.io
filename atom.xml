@@ -541,8 +541,8 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
         <id>https://blog.marticou.com/todo</id>
         <link href="https://blog.marticou.com/todo"/>
         <updated>1970-01-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Pour les curieux, en recherche du sujet d'exploration]]></summary>
-        <content type="html"><![CDATA[<p>Pour les curieux, en recherche du sujet d'exploration</p>
+        <summary type="html"><![CDATA[Pour les curieux, en recherche d'un sujet d'exploration]]></summary>
+        <content type="html"><![CDATA[<p>Pour les curieux, en recherche d'un sujet d'exploration</p>
 <ul class="contains-task-list containsTaskList_mC6p">
 <li class="task-list-item"><input type="checkbox" disabled="" checked=""> <!-- -->Fait</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->A faire</li>

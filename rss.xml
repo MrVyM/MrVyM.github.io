@@ -522,8 +522,8 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
             <link>https://blog.marticou.com/todo</link>
             <guid>https://blog.marticou.com/todo</guid>
             <pubDate>Thu, 01 Jan 1970 00:00:00 GMT</pubDate>
-            <description><![CDATA[Pour les curieux, en recherche du sujet d'exploration]]></description>
-            <content:encoded><![CDATA[<p>Pour les curieux, en recherche du sujet d'exploration</p>
+            <description><![CDATA[Pour les curieux, en recherche d'un sujet d'exploration]]></description>
+            <content:encoded><![CDATA[<p>Pour les curieux, en recherche d'un sujet d'exploration</p>
 <ul class="contains-task-list containsTaskList_mC6p">
 <li class="task-list-item"><input type="checkbox" disabled="" checked=""> <!-- -->Fait</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->A faire</li>
