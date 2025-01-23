@@ -526,7 +526,7 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
             <content:encoded><![CDATA[<p>Pour les curieux, en recherche du sujet d'exploration</p>
 <ul class="contains-task-list containsTaskList_mC6p">
 <li class="task-list-item"><input type="checkbox" disabled="" checked=""> <!-- -->Fait</li>
-<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Libre</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->A faire</li>
 </ul>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="hardware">Hardware<a href="https://blog.marticou.com/todo#hardware" class="hash-link" aria-label="Lien direct vers Hardware" title="Lien direct vers Hardware">​</a></h2>
 <ul class="contains-task-list containsTaskList_mC6p">
@@ -597,6 +597,7 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->TLS</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->mTLS</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Oauth2</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->DNS vs DNSSEC</li>
 </ul>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="utils">Utils<a href="https://blog.marticou.com/todo#utils" class="hash-link" aria-label="Lien direct vers Utils" title="Lien direct vers Utils">​</a></h2>
 <ul class="contains-task-list containsTaskList_mC6p">
