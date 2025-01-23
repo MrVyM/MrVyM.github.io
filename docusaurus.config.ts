@@ -91,7 +91,7 @@ const config: Config = {
       items: [
         {to: '/', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/mrvym/',
+          href: 'https://github.com/MrVyM/',
           label: 'GitHub',
           position: 'right',
         },
@@ -101,8 +101,12 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Community',
+          title: 'Contact',
           items: [
+            {
+              label: 'GitHub',
+              href: 'https://github.com/MrVyM',
+            },
           ],
         },
         {
@@ -113,11 +117,28 @@ const config: Config = {
               to: '/',
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: 'Tags',
+              to: '/tags',
+            },
+            {
+              label: 'Archive',
+              to: '/archive',
             },
           ],
         },
+        {
+          title: 'Feed',
+          items : [ 
+            {
+              label: 'RSS',
+              to: '/rss',
+            },
+            {
+              label: 'Atom',
+              to: '/atom',
+            }
+          ]
+        }
       ],
       copyright: `Copyright © ${new Date().getFullYear()} blog.mrvym.dev, Inc. Thanks to <href link="https://docusaurus.io/">Docusaurus.</href>`,
     },
