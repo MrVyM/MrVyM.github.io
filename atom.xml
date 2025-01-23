@@ -694,7 +694,7 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
 <li class="task-list-item"><input type="checkbox" disabled="" checked=""> <!-- -->Fait</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->A faire</li>
 </ul>
-<div class="tabs-container tabList__CuJ"><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_LNqP tabs__item--active">Hardware</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">ToolChain</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Deploy</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Linux</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Vim</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Proxmox</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Protocole</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Utils</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">IA</li></ul><div class="margin-top--md"><div role="tabpanel" class="tabItem_Ymn6"><ul class="contains-task-list containsTaskList_mC6p">
+<div class="tabs-container tabList__CuJ"><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_LNqP tabs__item--active">Hardware</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">ToolChain</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Deploy</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Linux</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Proxmox</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Protocole</li></ul><div class="margin-top--md"><div role="tabpanel" class="tabItem_Ymn6"><ul class="contains-task-list containsTaskList_mC6p">
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->I2C</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->SPI</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->UART</li>
@@ -733,11 +733,6 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->BSD</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Opensense vs Pfsense</li>
 </ul></div><div role="tabpanel" class="tabItem_Ymn6" hidden=""><ul class="contains-task-list containsTaskList_mC6p">
-<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Motion</li>
-<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Simple config</li>
-<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->LSP</li>
-<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Simple syntax plugin</li>
-</ul></div><div role="tabpanel" class="tabItem_Ymn6" hidden=""><ul class="contains-task-list containsTaskList_mC6p">
 <li class="task-list-item"><input type="checkbox" disabled="" checked=""> <!-- -->IAC</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Virtual Network + Namespace Linux</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->LXC</li>
@@ -751,6 +746,12 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->mTLS</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Oauth2</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->DNS vs DNSSEC</li>
+</ul></div></div></div>
+<div class="tabs-container tabList__CuJ"><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_LNqP tabs__item--active">Vim</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Utils</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">IA</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Son</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Rabbit Hole</li></ul><div class="margin-top--md"><div role="tabpanel" class="tabItem_Ymn6"><ul class="contains-task-list containsTaskList_mC6p">
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Motion</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Simple config</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->LSP</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Simple syntax plugin</li>
 </ul></div><div role="tabpanel" class="tabItem_Ymn6" hidden=""><ul class="contains-task-list containsTaskList_mC6p">
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->openssl</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->cat / head / tail</li>
@@ -764,8 +765,7 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Transformer</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Reseau de neurones convolutif</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Perceptron (Les bases de l'ia)</li>
-</ul></div></div></div>
-<div class="tabs-container tabList__CuJ"><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_LNqP tabs__item--active">Son</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Rabbit Hole</li></ul><div class="margin-top--md"><div role="tabpanel" class="tabItem_Ymn6"><ul class="contains-task-list containsTaskList_mC6p">
+</ul></div><div role="tabpanel" class="tabItem_Ymn6" hidden=""><ul class="contains-task-list containsTaskList_mC6p">
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Dba vs Dbc</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Noice canceling</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Court circuit acoustique</li>
