@@ -1,5 +1,5 @@
 ---
-slug: define-inc-a
+slug: define-inc-a-inc-a+1
 title: "#define INC(a) INC(a+1)" 
 tags:
 - define  

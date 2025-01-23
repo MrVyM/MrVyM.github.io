@@ -1,5 +1,5 @@
 ---
-slug: merveilleux-monde-de-make
+slug: le-merveilleux-monde-de-make
 title: Le Merveilleux Monde de Make 
 authors: [mrvym]
 tags: [make, C, c++, criterion]

@@ -1,6 +1,6 @@
 --- 
 title: Tester c'est tricher, compiler c'est douter
-slug: /tester-cest-tricher
+slug: tester-cest-tricher-compiler-c-est-douter
 tags:
 - git
 - CI 

@@ -1,5 +1,5 @@
 ---
-slug: sas-or-not-sas 
+slug: disque-dur-sas-sata-scsi-ide 
 title: "Disque dur : SAS, SATA, SCSI ou IDE ?"
 tags:
 - SSD

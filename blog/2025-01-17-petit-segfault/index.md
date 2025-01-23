@@ -1,5 +1,5 @@
 ---
-slug: petit-segfault
+slug: le-plus-petit-segfault
 title: Le plus petit segfault
 description: Coder le plus petit segfault du monde ! Et creusez dans le fonctionnement du 'main'.
 tags:
