@@ -1,6 +1,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import ComputeReadingTime from './ComputeReadingTime';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -65,8 +66,11 @@ const config: Config = {
           blogSidebarCount: 'ALL',
 
           showReadingTime: true,
-          readingTime: ({content, frontMatter, defaultReadingTime}) =>
-            defaultReadingTime({content, options: {wordsPerMinute: 300}}),
+          readingTime: ({content, frontMatter}) => {
+            frontMatter.hide_reading_time
+              ? undefined
+              : ComputeReadingTime({content, options: {wordsPerMinute: 300}});
+          },
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -85,7 +89,7 @@ const config: Config = {
     navbar: {
       title: 'blog.mrvym.dev',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Mon blog',
         src: 'img/logo.svg',
       },
       items: [
