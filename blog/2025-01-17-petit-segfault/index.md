@@ -6,7 +6,6 @@ tags:
 - C 
 - segv
 hide_title: false
-draft: true
 authors: [mrvym] 
 ---
 Dans cette article, on va voir comment faire un code qui crash le plus efficacement possible. 
