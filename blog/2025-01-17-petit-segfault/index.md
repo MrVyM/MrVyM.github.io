@@ -14,6 +14,7 @@ Cela veut dire comprendre ce qu'est un segfault, comment marche la fonction `mai
 
 Une magnifique occasion de faire de l'assembleur !
 
+<!-- truncate --> 
 ### Sans plus attendre, voici notre premier exemple :
 
 ```c
