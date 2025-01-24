@@ -8,8 +8,6 @@ tags:
 hide_title: false
 authors: [mrvym] 
 ---
-D'accord, voici le texte corrigé en conservant les anglicismes :
-
 
 Dans cet article, on va voir comment créer un code qui crash le plus efficacement possible.  
 Cela veut dire comprendre ce qu'est un segfault, comment marche la fonction `main`, ainsi que le code exécuté avant.
@@ -180,7 +178,7 @@ $ objdump -t ./main
 <-- truncate --> 
 0000000000000000         *UND*	0000000000000000 _start
 ```
-## Scrt1.o ca sort d'ou ?
+## Scrt1.o, ça sort d'où ?
 
 Alors hormis le fait que j'ai lu la doc de GCC, comment est-ce que je sais que `Scrt1.o` existe ?  
 Vous connaissez le `-v` ? Eh oui, on peut très bien activer le debug / verbose sur GCC.  
