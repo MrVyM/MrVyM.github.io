@@ -8,39 +8,48 @@ tags:
 hide_title: false
 authors: [mrvym] 
 ---
-Dans cette article, on va voir comment faire un code qui crash le plus efficacement possible. 
-Cela veut dire comprendre ce qu'est un segfault, marche la fonction main ainsi que le code avant.
+D'accord, voici le texte corrigé en conservant les anglicismes :
+
+
+Dans cet article, on va voir comment créer un code qui crash le plus efficacement possible.  
+Cela veut dire comprendre ce qu'est un segfault, comment marche la fonction `main`, ainsi que le code exécuté avant.
 
 Une magnifique occasion de faire de l'assembleur !
 
-Sans plus attendre, voici notre premier exemple : 
-<!-- truncate --> 
+### Sans plus attendre, voici notre premier exemple :
+
 ```c
 main;
 ```
-Il compile trés bien. 
-> gcc main.c -o main
 
-et produit cet output
+Ce code compile très bien :  
+> `gcc main.c -o main`
+
+et produit cet output :
 
 ```sh
 $ ./main
 [1]    20677 segmentation fault (core dumped)  ./main
 ```
 
+
 ### Un segfault
-Je pense que c'est le bon moment, c'est quoi un segfault ? 
 
-Un segfault ou segmentation fault est une erreur de segmentation. Nous l'avons lorsque que notre programme essaye de lire un pointeur qui ne nous appartient pas. 
-Au lancement du programme, l'OS lui attribue une certaine quantité de mémoire et il n'a pas le droit d'en sortir.
+Je pense que c’est le bon moment pour répondre à cette question : c’est quoi un segfault ?  
 
-C'est une sécurité pour que des programmes ne puissent pas aller voir ailleurs.
+Un **segfault** ou "segmentation fault" est une erreur de segmentation. On l’obtient lorsque notre programme essaye de lire un pointeur qui ne nous appartient pas.  
+Au lancement du programme, l’OS lui attribue une certaine quantité de mémoire, et il n’a pas le droit d’en sortir.
 
-Lorsque l'OS (pour être précis, le MMU) voit que le programme essaye d'accéder a la mémoire, il génère cette fault.
+C’est une sécurité pour empêcher des programmes d’accéder à des zones mémoire non autorisées.
 
-## On dump des obj 
-Pour mieux comprendre le fonctionnement du programme, on va allez voir le code machine. 
-Le `-t` nous permet de juste recuperer la liste des symboles.
+Quand l’OS (ou plus précisément, le MMU) détecte que le programme tente d’accéder à une mémoire non autorisée, il génère cette "fault".
+
+
+### On dump des objets
+
+Pour mieux comprendre le fonctionnement du programme, on va aller voir le code machine.  
+Le flag `-t` nous permet de récupérer juste la liste des symboles :  
+
 ```sh
 $ objdump -t ./main
 # <-- truncate --> 
@@ -52,30 +61,34 @@ $ objdump -t ./main
 # <-- truncate --> 
 0000000000001000 g     F .init	0000000000000000              .hidden _init
 ```
-On remarque le symbol `main` est dans le segment `.bss` et pas dans `.text`.
+
+On remarque que le symbole `main` est dans le segment `.bss` et pas dans `.text`.
 
 ![Segments in ELF file](./segment-c-code.png)
 
-Segment **bss* : 
-> Block starting symbol (abbreviated to .bss or bss) is the portion of an object file, executable, or assembly language code that contains statically allocated variables
+#### Segment **bss** :  
+> Le segment `.bss` (Block Starting Symbol) contient les variables statiques allouées.  
 
-Segment **text** :
-> Text segment or simply as text, is a portion of an object file or the corresponding section of the program's virtual address space that contains executable instructions
+#### Segment **text** :  
+> Le segment `.text` contient les instructions exécutables du programme.
 
 
-On rend compte que notre code ne déclare pas une fonction mais bien une variable. La variable étant global le compilateur crée un symbole pour elle.
-Cela se vérifie très simplement en rajoutant une variable `test` dans notre code. 
+On se rend compte que notre code ne déclare pas une fonction, mais bien une variable. La variable étant globale, le compilateur crée un symbole pour elle.  
+Cela se vérifie très simplement en rajoutant une variable `test` dans notre code :  
+
 ```sh
 0000000000004018 g     O .bss	0000000000000004              test
 ```
 
-En effet, le nom `main` n'est pas un keyword spécifique en C. C'est juste un nom de fonction arbitraire qui est appelé au lancement du programme. 
+En effet, le nom `main` n’est pas un keyword spécifique en C. C’est juste un nom de fonction arbitraire qui est appelé au lancement du programme.
 
-## Pour les quebecois
-Pour les puristes d'entre vous, il est tout a fait possible de ne pas mettre de fonction `main` dans votre code.
-Il vous suffit d'écrire votre propre fonction `_start` et de demander à GCC de ne pas link la sienne.
+
+### Pour les Québécois
+
+Pour les puristes d’entre vous, il est tout à fait possible de ne pas inclure une fonction `main` dans votre code.  
+Il suffit d’écrire votre propre fonction `_start` et de demander à GCC de ne pas linker la sienne :
+
 ```c
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -88,17 +101,19 @@ void _start() {
   int ret = principale();
   exit(ret);
 }
-
 ```
-> $ gcc principale.c -o principale -nostartfiles
 
-## Lancement du programme
-Mais d'ailleurs, qui call le `main` ? 
+> `$ gcc principale.c -o principale -nostartfiles`
 
-Cette fois ci, nous allons devoir regarder le code assembleur de notre code et plus spécifiquement la fonction `_start`. 
+
+### Lancement du programme
+
+Mais au fait, qui call la fonction `main` ?
+
+Pour répondre à cette question, regardons le code assembleur de notre programme, en particulier la fonction `_start`.  
 Au passage, on remarque que son symbole est bien dans le segment `.text`.
 
-Le code a été simplifié, car la fonction complète est assez complexe et longue
+Voici une version simplifiée du code (la fonction complète est assez complexe) :
 
 ```asm
 _start: 
@@ -114,52 +129,51 @@ _start:
     call _exit      
 ```
 
-Le symbol `_start` est le point d'entrée du programme, il n'est pas toujours a la même adresse. Son adresse est définie `ld` et on peut trouver la fonction dans le fichier `Scrt1.o`.
-Pour résumer, on :
-- marque la fin de la stack frame
-    > xor %ebp, %ebp            
-- set argc
-    > mov (%rsp), %edi          
-- set argv
-    > lea 8(%rsp), %rsi
-- set envp
-    > lea 16(%rsp,%rdi,8), %rdx 
-- set a 0, le return code (pour de la compatibilité)
-    > xor %eax, %eax
-- call la fonction main avec main(argc, argv, envp)
-    > call main                 
-- call la fonction _exit avec le return code
-    > mov %eax, %edi    
-    xor %eax, %eax   
-    call _exit      
+#### Étapes de `_start` :
+- On marque la fin de la stack frame :  
+    `xor %ebp, %ebp`  
+- On initialise `argc` :  
+    `mov (%rsp), %edi`  
+- On initialise `argv` :  
+    `lea 8(%rsp), %rsi`  
+- On initialise `envp` :  
+    `lea 16(%rsp,%rdi,8), %rdx`  
+- On set un code retour initialisé à 0 (compatibilité) :  
+    `xor %eax, %eax`  
+- On call `main(argc, argv, envp)` :  
+    `call main`  
+- On call la fonction `_exit` avec le code retour :  
+    `mov %eax, %edi`  
+    `call _exit`
 
-### Envp ?? 
-Le vrai prototype de la fonction main a 3 arguments. 
+### Envp ??
+
+Le vrai prototype de la fonction `main` a 3 arguments :  
+
 ```c
 int main(int argc, char* argv[], char* envp[]);
 ```
-> Oui, j'ai vraiment découvert le vrai prototype de la fonction main en faisant le reverse de la '_start'.
 
-Vous pouvez vous en doutez avec le nom, ce sont les variables d'environnement du shell.
-Si on ne vous a jamais montré cela, c'est parce que ce n'est pas portable (même si toute les machines actuels le supportent).
+> Oui, j’ai découvert le vrai prototype en analysant le reverse de `_start`.
+
+Comme son nom l’indique, `envp` correspond aux variables d’environnement du shell.  
+Si on ne vous a jamais montré ça, c’est parce que ce n’est pas portable (même si toutes les machines actuelles le supportent).
 
 
-## Encore plus petit 
-Et oui, si vous avez bien suivi, il est maintenant possible de segfault encore plus vite le programme. Il suffit que le segfault ne soit pas dans la fonction `main` mais dans la fonction `_start`. 
+### Encore plus petit
 
-On a vu comment faire pour coder notre propre fonction `_start`. Vous vous dites surement que cela va être compliqué de coder une fonction `_start` en moins de 5 caractères.
-Mais comme dit si bien Mr.Ping dans Kung Fu Panda.
-> Le secret du bonheur, c’est qu'il n’y a pas d’ingrédient secret.
+Et oui, si vous avez bien suivi, il est maintenant possible de segfault encore plus vite. Il suffit que le segfault soit directement dans la fonction `_start`, sans passer par `main`.  
 
-Et oui, il suffit de ne rien mettre dans le fichier source.
+Voici un exemple minimaliste (vide) :  
 
 ```sh
 $ touch main.c
 /usr/bin/ld: warning: cannot find entry symbol _start; defaulting to 0000000000001000
 $ gcc -o main main.c -nostartfiles
 ```
-Nous avons certes un warning mais ça compile.
-Un `objdump` nous permet de voir qu'il n'y a globalement rien dans ce fichier et que le symbole `_start` n'est pas défini.
+
+Nous avons certes un warning, mais ça compile.  
+Un `objdump` montre qu’il n’y a presque rien dans ce fichier et que le symbole `_start` n’est pas défini :
 
 ```sh
 $ objdump -t ./main
@@ -168,12 +182,12 @@ $ objdump -t ./main
 ```
 ## Scrt1.o ca sort d'ou ?
 
-Alors hormis le fait que j'ai lu la doc de GCC, comment est-ce que je sais que Scrt1.o existe ? 
-Vous connaissez le `-v` ? Et oui, on peut très bien activé le debug / verbose sur GCC.
+Alors hormis le fait que j'ai lu la doc de GCC, comment est-ce que je sais que `Scrt1.o` existe ?  
+Vous connaissez le `-v` ? Eh oui, on peut très bien activer le debug / verbose sur GCC.  
 
-Personne le fait parce qu'il faut avoir un sacré melon pour considérer que GCC fait mal son travail (sauf moi).
+Personne ne le fait parce qu'il faut avoir un sacré melon pour considérer que GCC fait mal son travail (sauf moi).  
 
-En activant ce flag, on se retrouve avec pas mal de variable d'env qui sont print mais pas que. On trouve notamment cette ligne dans laquelle on voit l'include des fichiers `.o`.
+En activant ce flag, on se retrouve avec pas mal de variables d'env qui sont print, mais pas que. On trouve notamment cette ligne dans laquelle on voit l'include des fichiers `.o` :  
 
 ```sh
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/collect2 
@@ -203,16 +217,16 @@ En activant ce flag, on se retrouve avec pas mal de variable d'env qui sont prin
     /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/crtn.o
 ```
 
-On remarque beaucoup de flags, on peut essayer d'analyser rapidement leur effet. 
+On remarque beaucoup de flags, on peut essayer d'analyser rapidement leur effet.  
 
-- Les amateurs de CTF, vous aurez remarquer le flag `-pie` qui permet d'activer l'address space layout randomization (ASLR). 
-- `-lgcc` est oui, votre programme C compile a la librairie dynamique GCC.
-   Vous pouvez le fait de compiler avec en faisant un `-nostdlib`. Je ne vois pas bien l'intérêt mais c'est un choix.
--  `-m elf_x86_64`, c'est ici que GCC spécifie l'architecture de la machine cible
-   C'est possible de modifier cette machine cible, cela s'appelle la cross compilation (mais j'en ferai un article spécifique)
+- Les amateurs de CTF, vous aurez remarqué le flag `-pie`, qui permet d'activer l'Address Space Layout Randomization (ASLR).  
+- `-lgcc` : eh oui, votre programme C compile avec la librairie dynamique GCC.  
+  Vous pouvez éviter ça en compilant avec `-nostdlib`. Je ne vois pas bien l'intérêt, mais c'est un choix.  
+- `-m elf_x86_64` : c'est ici que GCC spécifie l'architecture de la machine cible.  
+  C'est possible de modifier cette machine cible, cela s'appelle la cross compilation (mais j'en ferai un article spécifique).  
 
-On trouve aussi le fichier `Scrt1.o` qui contient le point d'entrée (_start) de l'exécutable. Les fichiers `crti.o` et `crtbeginS.o` eux fournissent des routines nécessaires à l’initialisation des fonctions globales et statiques.
-On pourra citer la fonction `_init` et `_fini`.
+On trouve aussi le fichier `Scrt1.o`, qui contient le point d'entrée (`_start`) de l'exécutable. Les fichiers `crti.o` et `crtbeginS.o`, eux, fournissent des routines nécessaires à l’initialisation des fonctions globales et statiques.  
+On pourra citer les fonctions `_init` et `_fini`.  
 
 
 Source : 
