@@ -1,0 +1,40 @@
+---
+slug: how-copy-paste-works-on-linux 
+title: "How copy-paste works on Linux ?"
+tags:
+- Linux
+- Xorg   
+- Copy
+- Paste
+hide_title: false
+date: 2025-01-31
+authors: [mrvym]
+---
+# How Copy Paste works on Linux
+<!-- truncate -->
+
+## Support by X11 
+
+### Cut Buffers
+
+### Selection
+#### PRIMARY
+#### SECONDARY
+  - Unused
+#### CLIPBOARD
+
+## Support by Tmux
+
+## Alias
+
+```sh
+alias paste="xsel --clipboard"
+```
+
+```sh
+alias copy="xsel --clipboard"
+```
+Sources : 
+- [VimDoc](http://vimdoc.sourceforge.net/htmldoc/gui_x11.html#quoteplus)
+- [ICCCM](https://x.org/releases/X11R7.6/doc/xorg-docs/specs/ICCCM/icccm.html)
+- [ClipbordWiki](https://www.freedesktop.org/wiki/Specifications/ClipboardsWiki/)
