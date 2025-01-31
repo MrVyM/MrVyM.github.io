@@ -67,11 +67,8 @@ const config: Config = {
           blogSidebarCount: 'ALL',
 
           showReadingTime: true,
-          readingTime: ({content, frontMatter, defaultReadingTime}) => {
-            frontMatter.hide_reading_time
-              ? undefined
-              : customReadingTime({content, options: {wordsPerMinute : 300}}); 
-          },
+          readingTime: ({content, frontMatter, defaultReadingTime}) => 
+            customReadingTime({content, options: {wordsPerMinute : 300}}).minutes,
         },
         theme: {
           customCss: './src/css/custom.css',
