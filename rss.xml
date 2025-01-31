@@ -643,6 +643,13 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
 <li class="task-list-item"><input type="checkbox" disabled="" checked=""> <!-- -->Fait</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->A faire</li>
 </ul>
+<p>Mon prompt ChatGPT <!-- -->😉</p>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Details</summary><div><div class="collapsibleContent_i85q"><p>Hello, I'm a French IT specialist. I want to improve my English, so I've created a blog about IT in English. You have two tasks:</p><ul>
+<li>Firstly, to list all the bad words, incorrect sentences and misspelled words.
+You have to explain why and where the problem lies. You must explain this in French. If a sentence is correct, don't mention it.</li>
+<li>For the second part, you need to critique the article. Any potential tips, topics... Anything that could improve the article. The critique must be in English.
+Be quick and precise, without unnecessary detail.</li>
+</ul></div></div></details>
 <div class="tabs-container tabList__CuJ"><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_LNqP tabs__item--active">Hardware</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">ToolChain</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Deploy</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Linux</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Proxmox</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Protocole</li></ul><div class="margin-top--md"><div role="tabpanel" class="tabItem_Ymn6"><ul class="contains-task-list containsTaskList_mC6p">
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->I2C</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->SPI</li>
