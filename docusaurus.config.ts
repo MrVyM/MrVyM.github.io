@@ -1,6 +1,8 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import { customReadingTime } from './ComputeReadingTime'
+
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -68,7 +70,7 @@ const config: Config = {
           readingTime: ({content, frontMatter, defaultReadingTime}) => {
             frontMatter.hide_reading_time
               ? undefined
-              : defaultReadingTime({content, options: {wordsPerMinute: 300}});
+              : customReadingTime({content, options: {wordsPerMinute : 300}}); 
           },
         },
         theme: {
