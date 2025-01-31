@@ -4,40 +4,10 @@
         <title>MrVyM.dev Blog</title>
         <link>https://blog.marticou.com/</link>
         <description>MrVyM.dev Blog</description>
-        <lastBuildDate>Fri, 31 Jan 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 17 Jan 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>fr</language>
-        <item>
-            <title><![CDATA[How copy-paste works on Linux ?]]></title>
-            <link>https://blog.marticou.com/how-copy-paste-works-on-linux</link>
-            <guid>https://blog.marticou.com/how-copy-paste-works-on-linux</guid>
-            <pubDate>Fri, 31 Jan 2025 00:00:00 GMT</pubDate>
-            <description><![CDATA[Support by X11]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="support-by-x11">Support by X11<a href="https://blog.marticou.com/how-copy-paste-works-on-linux#support-by-x11" class="hash-link" aria-label="Lien direct vers Support by X11" title="Lien direct vers Support by X11">​</a></h2>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="cut-buffers">Cut Buffers<a href="https://blog.marticou.com/how-copy-paste-works-on-linux#cut-buffers" class="hash-link" aria-label="Lien direct vers Cut Buffers" title="Lien direct vers Cut Buffers">​</a></h3>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="selection">Selection<a href="https://blog.marticou.com/how-copy-paste-works-on-linux#selection" class="hash-link" aria-label="Lien direct vers Selection" title="Lien direct vers Selection">​</a></h3>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="primary">PRIMARY<a href="https://blog.marticou.com/how-copy-paste-works-on-linux#primary" class="hash-link" aria-label="Lien direct vers PRIMARY" title="Lien direct vers PRIMARY">​</a></h4>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="secondary">SECONDARY<a href="https://blog.marticou.com/how-copy-paste-works-on-linux#secondary" class="hash-link" aria-label="Lien direct vers SECONDARY" title="Lien direct vers SECONDARY">​</a></h4>
-<ul>
-<li>Unused</li>
-</ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="clipboard">CLIPBOARD<a href="https://blog.marticou.com/how-copy-paste-works-on-linux#clipboard" class="hash-link" aria-label="Lien direct vers CLIPBOARD" title="Lien direct vers CLIPBOARD">​</a></h4>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="support-by-tmux">Support by Tmux<a href="https://blog.marticou.com/how-copy-paste-works-on-linux#support-by-tmux" class="hash-link" aria-label="Lien direct vers Support by Tmux" title="Lien direct vers Support by Tmux">​</a></h2>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="alias">Alias<a href="https://blog.marticou.com/how-copy-paste-works-on-linux#alias" class="hash-link" aria-label="Lien direct vers Alias" title="Lien direct vers Alias">​</a></h2>
-<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">alias paste="xsel --clipboard"</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copier le code" title="Copier" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">alias copy="xsel --clipboard"</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copier le code" title="Copier" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>Sources :</p>
-<ul>
-<li><a href="http://vimdoc.sourceforge.net/htmldoc/gui_x11.html#quoteplus" target="_blank" rel="noopener noreferrer">VimDoc</a></li>
-<li><a href="https://x.org/releases/X11R7.6/doc/xorg-docs/specs/ICCCM/icccm.html" target="_blank" rel="noopener noreferrer">ICCCM</a></li>
-<li><a href="https://www.freedesktop.org/wiki/Specifications/ClipboardsWiki/" target="_blank" rel="noopener noreferrer">ClipbordWiki</a></li>
-</ul>]]></content:encoded>
-            <category>Linux</category>
-            <category>Xorg</category>
-            <category>Copy</category>
-            <category>Paste</category>
-        </item>
         <item>
             <title><![CDATA[Le plus petit segfault]]></title>
             <link>https://blog.marticou.com/le-plus-petit-segfault</link>
