@@ -29,8 +29,8 @@ const config: Config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'fr',
+    locales: ['fr'],
   },
 
   presets: [
@@ -137,11 +137,11 @@ const config: Config = {
           items : [ 
             {
               label: 'RSS',
-              hreaf: 'blog.marticou.com/rss',
+              href: 'https://blog.marticou.com/rss',
             },
             {
               label: 'Atom',
-              href: 'blog.marticou.com/atom',
+              href: 'https://blog.marticou.com/atom',
             }
           ]
         }
