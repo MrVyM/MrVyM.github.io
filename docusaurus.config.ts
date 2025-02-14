@@ -137,11 +137,11 @@ const config: Config = {
           items : [ 
             {
               label: 'RSS',
-              to: '/rss',
+              hreaf: 'blog.marticou.com/rss',
             },
             {
               label: 'Atom',
-              to: '/atom',
+              href: 'blog.marticou.com/atom',
             }
           ]
         }
