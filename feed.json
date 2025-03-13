@@ -124,10 +124,10 @@
         },
         {
             "id": "https://blog.marticou.com/draft",
-            "content_html": "<p>[ ] how-copy-paste-works-on-linux\n[ ] plot-chart-docusaurus-mdx\n[ ] sleep-from-python-to-electronics\n[ ] one-wire-protocol</p>",
+            "content_html": "<p>Je travaille actuellement sur :</p>\n<ul class=\"contains-task-list containsTaskList_mC6p\">\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled=\"\"> <!-- -->how-copy-paste-works-on-linux</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled=\"\"> <!-- -->plot-chart-docusaurus-mdx</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled=\"\"> <!-- -->sleep-from-python-to-electronics</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled=\"\"> <!-- -->one-wire-protocol</li>\n</ul>",
             "url": "https://blog.marticou.com/draft",
             "title": "Draft / Waiting",
-            "summary": "[ ] how-copy-paste-works-on-linux",
+            "summary": "Je travaille actuellement sur :",
             "date_modified": "1970-01-01T00:00:00.000Z",
             "author": {
                 "name": "Vianney Marticou",
