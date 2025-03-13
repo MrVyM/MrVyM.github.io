@@ -746,5 +746,16 @@ Be quick and precise, without unnecessary detail.</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Cloud computing (RoCEE)</li>
 </ul></div></div></div>]]></content:encoded>
         </item>
+        <item>
+            <title><![CDATA[Draft / Waiting]]></title>
+            <link>https://blog.marticou.com/draft</link>
+            <guid>https://blog.marticou.com/draft</guid>
+            <pubDate>Thu, 01 Jan 1970 00:00:00 GMT</pubDate>
+            <description><![CDATA[[ ] how-copy-paste-works-on-linux]]></description>
+            <content:encoded><![CDATA[<p>[ ] how-copy-paste-works-on-linux
+[ ] plot-chart-docusaurus-mdx
+[ ] sleep-from-python-to-electronics
+[ ] one-wire-protocol</p>]]></content:encoded>
+        </item>
     </channel>
 </rss>

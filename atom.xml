@@ -773,4 +773,19 @@ Be quick and precise, without unnecessary detail.</li>
             <uri>https://github.com/mrvym</uri>
         </author>
     </entry>
+    <entry>
+        <title type="html"><![CDATA[Draft / Waiting]]></title>
+        <id>https://blog.marticou.com/draft</id>
+        <link href="https://blog.marticou.com/draft"/>
+        <updated>1970-01-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[[ ] how-copy-paste-works-on-linux]]></summary>
+        <content type="html"><![CDATA[<p>[ ] how-copy-paste-works-on-linux
+[ ] plot-chart-docusaurus-mdx
+[ ] sleep-from-python-to-electronics
+[ ] one-wire-protocol</p>]]></content>
+        <author>
+            <name>Vianney Marticou</name>
+            <uri>https://github.com/mrvym</uri>
+        </author>
+    </entry>
 </feed>

@@ -121,6 +121,19 @@
                 "url": "https://github.com/mrvym"
             },
             "tags": []
+        },
+        {
+            "id": "https://blog.marticou.com/draft",
+            "content_html": "<p>[ ] how-copy-paste-works-on-linux\n[ ] plot-chart-docusaurus-mdx\n[ ] sleep-from-python-to-electronics\n[ ] one-wire-protocol</p>",
+            "url": "https://blog.marticou.com/draft",
+            "title": "Draft / Waiting",
+            "summary": "[ ] how-copy-paste-works-on-linux",
+            "date_modified": "1970-01-01T00:00:00.000Z",
+            "author": {
+                "name": "Vianney Marticou",
+                "url": "https://github.com/mrvym"
+            },
+            "tags": []
         }
     ]
 }
