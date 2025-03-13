@@ -124,7 +124,7 @@
         },
         {
             "id": "https://blog.marticou.com/draft",
-            "content_html": "<p>Je travaille actuellement sur :</p>\n<ul class=\"contains-task-list containsTaskList_mC6p\">\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled=\"\"> <!-- -->how-copy-paste-works-on-linux</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled=\"\"> <!-- -->plot-chart-docusaurus-mdx</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled=\"\"> <!-- -->sleep-from-python-to-electronics</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled=\"\"> <!-- -->one-wire-protocol</li>\n</ul>",
+            "content_html": "<p>Je travaille actuellement sur :</p>\n<ul class=\"contains-task-list containsTaskList_mC6p\">\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled=\"\"> <!-- --> How copy-paste works on Linux ?</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled=\"\"> <!-- --> How to code plot and chart in Docusaurus with MDX</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled=\"\"> <!-- --> Sleep from Python to Electronics</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled=\"\"> <!-- --> Protect a program to Pkill</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled=\"\"> <!-- --> Comment marche le bus 1-Wire ?</li>\n</ul>",
             "url": "https://blog.marticou.com/draft",
             "title": "Draft / Waiting",
             "summary": "Je travaille actuellement sur :",

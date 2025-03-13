@@ -754,10 +754,11 @@ Be quick and precise, without unnecessary detail.</li>
             <description><![CDATA[Je travaille actuellement sur :]]></description>
             <content:encoded><![CDATA[<p>Je travaille actuellement sur :</p>
 <ul class="contains-task-list containsTaskList_mC6p">
-<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->how-copy-paste-works-on-linux</li>
-<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->plot-chart-docusaurus-mdx</li>
-<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->sleep-from-python-to-electronics</li>
-<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->one-wire-protocol</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- --> How copy-paste works on Linux ?</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- --> How to code plot and chart in Docusaurus with MDX</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- --> Sleep from Python to Electronics</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- --> Protect a program to Pkill</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- --> Comment marche le bus 1-Wire ?</li>
 </ul>]]></content:encoded>
         </item>
     </channel>
