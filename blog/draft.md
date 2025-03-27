@@ -4,6 +4,7 @@ title: Draft / Waiting
 authors: mrvym
 hide_title: false
 date: 1970-01-01
+unlisted: true
 ---
 # Les articles en cours d'ecriture
 <!-- truncate -->
