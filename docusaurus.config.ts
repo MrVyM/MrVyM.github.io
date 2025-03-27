@@ -55,6 +55,7 @@ const config: Config = {
           feedOptions: {
             type: 'all',
             xslt: true,
+            copyright: `Copyright © ${new Date().getFullYear()} MrVym.dev.`,
           },
           editUrl: 'https://github.com/MrVyM/MrVyM.github.io/issues',
           // Useful options to enforce blogging best practices
