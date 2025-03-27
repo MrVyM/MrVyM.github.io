@@ -1,3 +1,6 @@
+---
+draft: true
+---
 <!-- truncate -->
 # Syscall on OpenBSD
 Les versions récentes d'OpenBSD empêchent l'utilisation directe des syscalls depuis le code utilisateur, en imposant une vérification dans l'éditeur de liens dynamique (`ld.so`). 

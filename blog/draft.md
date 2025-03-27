@@ -10,6 +10,7 @@ date: 1970-01-01
 Je travaille actuellement sur :
 - [ ]  How copy-paste works on Linux ?
 - [ ]  How to code plot and chart in Docusaurus with MDX
+- [ ] 
 - [ ]  Sleep from Python to Electronics
 - [ ]  Protect a program to Pkill
 - [ ]  Comment marche le bus 1-Wire ?  
