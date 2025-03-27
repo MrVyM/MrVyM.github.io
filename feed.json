@@ -108,19 +108,6 @@
                 "c++",
                 "criterion"
             ]
-        },
-        {
-            "id": "https://blog.marticou.com/draft",
-            "content_html": "<p>Je travaille actuellement sur :</p>\n<ul class=\"contains-task-list containsTaskList_mC6p\">\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled=\"\"> <!-- --> How copy-paste works on Linux ?</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled=\"\"> <!-- --> How to code plot and chart in Docusaurus with MDX</li>\n<li>[ ]</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled=\"\"> <!-- --> Sleep from Python to Electronics</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled=\"\"> <!-- --> Protect a program to Pkill</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled=\"\"> <!-- --> Comment marche le bus 1-Wire ?</li>\n</ul>",
-            "url": "https://blog.marticou.com/draft",
-            "title": "Draft / Waiting",
-            "summary": "Je travaille actuellement sur :",
-            "date_modified": "1970-01-01T00:00:00.000Z",
-            "author": {
-                "name": "Vianney Marticou",
-                "url": "https://github.com/mrvym"
-            },
-            "tags": []
         }
     ]
 }

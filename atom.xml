@@ -656,24 +656,4 @@ Nous pouvons aussi mettre en argument le nom de la règle que nous voulons exéc
         <category label="c++" term="c++"/>
         <category label="criterion" term="criterion"/>
     </entry>
-    <entry>
-        <title type="html"><![CDATA[Draft / Waiting]]></title>
-        <id>https://blog.marticou.com/draft</id>
-        <link href="https://blog.marticou.com/draft"/>
-        <updated>1970-01-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Je travaille actuellement sur :]]></summary>
-        <content type="html"><![CDATA[<p>Je travaille actuellement sur :</p>
-<ul class="contains-task-list containsTaskList_mC6p">
-<li class="task-list-item"><input type="checkbox" disabled=""> <!-- --> How copy-paste works on Linux ?</li>
-<li class="task-list-item"><input type="checkbox" disabled=""> <!-- --> How to code plot and chart in Docusaurus with MDX</li>
-<li>[ ]</li>
-<li class="task-list-item"><input type="checkbox" disabled=""> <!-- --> Sleep from Python to Electronics</li>
-<li class="task-list-item"><input type="checkbox" disabled=""> <!-- --> Protect a program to Pkill</li>
-<li class="task-list-item"><input type="checkbox" disabled=""> <!-- --> Comment marche le bus 1-Wire ?</li>
-</ul>]]></content>
-        <author>
-            <name>Vianney Marticou</name>
-            <uri>https://github.com/mrvym</uri>
-        </author>
-    </entry>
 </feed>
