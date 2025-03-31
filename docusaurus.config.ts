@@ -12,14 +12,14 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://blog.marticou.com/',
+  url: 'https://mrvym.dev/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'MrVyM', // Usually your GitHub org/user name.
+  organizationName: 'MrVym', // Usually your GitHub org/user name.
   projectName: 'posts', // Usually your repo name.
 
   onBrokenLinks: 'warn',
@@ -138,16 +138,16 @@ const config: Config = {
           items : [ 
             {
               label: 'RSS',
-              href: 'https://blog.marticou.com/rss',
+              href: 'https://mrvym.dev/rss',
             },
             {
               label: 'Atom',
-              href: 'https://blog.marticou.com/atom',
+              href: 'https://mrvym.dev/atom',
             }
           ]
         }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} blog.mrvym.dev, Inc. Thanks to <href link="https://docusaurus.io/">Docusaurus.</href>`,
+      copyright: `Copyright © ${new Date().getFullYear()} mrvym.dev, Inc. Thanks to <href link="https://docusaurus.io/">Docusaurus.</href>`,
     },
     prism: {
       theme: prismThemes.github,
