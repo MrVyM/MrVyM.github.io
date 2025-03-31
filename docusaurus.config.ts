@@ -12,7 +12,7 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://mrvym.dev/',
+  url: 'https://blog.mrvym.dev/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -138,11 +138,11 @@ const config: Config = {
           items : [ 
             {
               label: 'RSS',
-              href: 'https://mrvym.dev/rss',
+              href: 'https://blog.mrvym.dev/rss',
             },
             {
               label: 'Atom',
-              href: 'https://mrvym.dev/atom',
+              href: 'https://blog.mrvym.dev/atom',
             }
           ]
         }

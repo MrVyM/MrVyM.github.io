@@ -23,7 +23,7 @@ jobs:
         run: npm run build
 
       - name: CNAME file
-        run: echo "mrvym.dev" > build/CNAME
+        run: echo "blog.mrvym.dev" > build/CNAME
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
