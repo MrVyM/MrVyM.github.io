@@ -8,7 +8,7 @@
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>fr</language>
-        <copyright>Copyright © 2025 MrVym.dev.</copyright>
+        <copyright>Copyright © ${new Date().getFullYear()} MrVym.dev.</copyright>
         <item>
             <title><![CDATA[Le plus petit segfault]]></title>
             <link>https://blog.mrvym.dev/le-plus-petit-segfault</link>

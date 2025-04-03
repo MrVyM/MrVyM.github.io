@@ -7,7 +7,7 @@
     <link rel="alternate" href="https://blog.mrvym.dev/"/>
     <subtitle>MrVyM.dev Blog</subtitle>
     <icon>https://blog.mrvym.dev/img/favicon.ico</icon>
-    <rights>Copyright © 2025 MrVym.dev.</rights>
+    <rights>Copyright © ${new Date().getFullYear()} MrVym.dev.</rights>
     <entry>
         <title type="html"><![CDATA[Le plus petit segfault]]></title>
         <id>https://blog.mrvym.dev/le-plus-petit-segfault</id>
