@@ -27,7 +27,8 @@ $ man 9 syscall
 Section `Code references` on trouve /sys/kern/syscall.master
 
 Ce fichier est très important, il contient la liste des syscalls sur OpenBSD. À noter qu'à la différence de Linux, leurs déclarations sont faites dans ce fichier donc dynamique. 
-Il est relativement `simple` d'ajouter un syscall sur BSD. 
+Il est relativement `simple` d'ajouter un syscall sur BSD.
+
 
 ## Coder le syscall
 
