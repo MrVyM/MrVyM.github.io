@@ -1,0 +1,47 @@
+#!/bin/sh
+
+set -e
+
+cd blog/
+file_draft="draft.md"
+touch $file_draft
+
+cat <<\EOF >$file_draft
+--- 
+slug: draft
+title: Draft / Waiting
+authors: mrvym
+hide_title: false
+date: 1970-01-01
+unlisted: true
+---
+# Les articles en cours d'ecriture
+<!-- truncate -->
+EOF
+
+echo "Je travaille actuellement sur :" >>$file_draft
+
+is_draft=false
+for article in $(find . -name "*.md*"); do
+  if cat $article | grep "unlisted: true" >/dev/null; then
+    if ! $is_draft; then
+      is_draft=true
+      echo "There is some article in draft : "
+    fi
+
+    slug=$(cat $article | grep '^slug:' | cut -d ':' -f 2 | xargs echo -n)
+    title=$(cat $article | grep '^title:' | cut -d ':' -f 2 | xargs echo -n)
+
+    if [[ $slug != "draft" ]] && [[ $slug != "todo" ]]; then
+      echo $article
+      echo -e "\t lines : $(cat $article | wc -l)"
+      echo "- [ ] [$title](/$slug)" >>$file_draft
+    fi
+  fi
+done
+
+if $is_draft; then
+  printf "\n\n"
+fi
+
+git add $file_draft
