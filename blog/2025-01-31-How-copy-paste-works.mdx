@@ -33,25 +33,32 @@ So the circular buffer is like a history of all copy-paste.
 
 Nowday, there is no more programs which used a cut-buffer or at least they used the cut-buffer and the new way.
 
-
 ## Support by X11 
 
-### Selection
+X got a objet that called 'selections'. There are essentially clipboards but for different use.
+There are THREE selections defines by ICCCM : Primary, Secondary and Clipboard
 #### PRIMARY
-#### SECONDARY
-  - Unused
-#### CLIPBOARD
 
-## Support by Tmux
+#### SECONDARY
+
+  - Unused
+
+#### CLIPBOARD
 
 ## Alias
 
 ```sh
-alias paste="xsel --clipboard"
+alias paste="xclip -o"
+
+alias copy="xclip"
 ```
 
+And so you can use like this.
+
 ```sh
-alias copy="xsel --clipboard"
+cat LONG_FILE | copy 
+
+paste | vim - 
 ```
 Sources : 
 - [ICCCM](https://x.org/releases/X11R7.6/doc/xorg-docs/specs/ICCCM/icccm.html)
