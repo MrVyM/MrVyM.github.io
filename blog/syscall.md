@@ -1,11 +1,21 @@
 ---
-draft: true
+slug: syscall-on-openbsd
+title: Syscall on OpenBSD
+tags:
+- openbsd
+- syscall
+- kernel
+unlisted: true
+authors: mrvym
+hide_title: false
+date: 01/01/1970
 ---
-<!-- truncate -->
 # Syscall on OpenBSD
 Les versions récentes d'OpenBSD empêchent l'utilisation directe des syscalls depuis le code utilisateur, en imposant une vérification dans l'éditeur de liens dynamique (`ld.so`). 
 Cela renforce la sécurité en rendant les exploits plus difficiles. 
 Ce rapport explore la mise en place de cette protection, son fonctionnement, et comment la désactiver en modifiant le code source du système.
+
+<!-- truncate --> 
 
 ## Trouver le num d'un syscall 
 

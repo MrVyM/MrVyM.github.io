@@ -9,9 +9,9 @@ unlisted: true
 # Les articles en cours d'ecriture
 <!-- truncate -->
 Je travaille actuellement sur :
-- [ ]  How copy-paste works on Linux ?
-- [ ]  How to code plot and chart in Docusaurus with MDX
-- [ ] 
-- [ ]  Sleep from Python to Electronics
-- [ ]  Protect a program to Pkill
-- [ ]  Comment marche le bus 1-Wire ?  
+- [ ] [How copy-paste works on Linux ?](/how-copy-paste-works-on-linux)
+- [ ] [How to code plot and chart in Docusaurus with MDX](/plot-chart-docusaurus-mdx)
+- [ ] [Syscall on OpenBSD](/syscall-on-openbsd)
+- [ ] [Sleep from Python to Electronics](/sleep-from-python-to-electronics)
+- [ ] [Protect a program to Pkill](/protect-a-programm-to-pkill)
+- [ ] [Comment marche le bus 1-Wire ?](/one-wire-protocol)

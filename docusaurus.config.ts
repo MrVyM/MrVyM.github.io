@@ -55,7 +55,7 @@ const config: Config = {
           feedOptions: {
             type: 'all',
             xslt: true,
-            copyright: `Copyright © ${new Date().getFullYear()} MrVym.dev.`,
+            copyright: 'Copyright © ${new Date().getFullYear()} MrVym.dev.',
           },
           editUrl: 'https://github.com/MrVyM/MrVyM.github.io/issues',
           // Useful options to enforce blogging best practices
@@ -93,6 +93,8 @@ const config: Config = {
       },
       items: [
         {to: '/', label: 'Blog', position: 'left'},
+        {to: '/draft', label: 'Draft', position: 'right'},
+        {to: '/todo', label: 'Todo', position: 'right'},
         {
           href: 'https://github.com/MrVyM/',
           label: 'GitHub',
