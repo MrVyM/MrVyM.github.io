@@ -1,0 +1,15 @@
+{
+  "id": "docs",
+  "title": "docs",
+  "description": "",
+  "source": "@site/docs/docs.md",
+  "sourceDirName": ".",
+  "slug": "/docs",
+  "permalink": "/docs/docs",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "defaultSidebar"
+}
