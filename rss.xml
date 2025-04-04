@@ -4,11 +4,80 @@
         <title>MrVyM.dev Blog</title>
         <link>https://blog.mrvym.dev/</link>
         <description>MrVyM.dev Blog</description>
-        <lastBuildDate>Fri, 17 Jan 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 04 Apr 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>fr</language>
         <copyright>Copyright © ${new Date().getFullYear()} MrVym.dev.</copyright>
+        <item>
+            <title><![CDATA[How copy-paste works on Linux ?]]></title>
+            <link>https://blog.mrvym.dev/how-copy-paste-works-on-linux</link>
+            <guid>https://blog.mrvym.dev/how-copy-paste-works-on-linux</guid>
+            <pubDate>Fri, 04 Apr 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this article, we will explore the internal workings of copy and paste in Linux.]]></description>
+            <content:encoded><![CDATA[<p>In this article, we will explore the internal workings of copy and paste in Linux.
+First, let me provide some context. There is a manual, almost like an RFC.</p>
+<p>The Inter-Communication Client Conventions Manual (ICCCM for short), which lays down some rules.
+The first version was published in July 1989, the second in 1994.
+This manual, written 30 years ago, is therefore the reference for the subject.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="first-some-history">First some history<a href="https://blog.mrvym.dev/how-copy-paste-works-on-linux#first-some-history" class="hash-link" aria-label="Lien direct vers First some history" title="Lien direct vers First some history">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="x-vs-xorg-vs-x11">X vs X.org vs X11<a href="https://blog.mrvym.dev/how-copy-paste-works-on-linux#x-vs-xorg-vs-x11" class="hash-link" aria-label="Lien direct vers X vs X.org vs X11" title="Lien direct vers X vs X.org vs X11">​</a></h3>
+<p>The X Window System, also known as X, is old. Written in 1984, it was the default windowing system for most Unix systems.
+But X is not the implementation, it is more a set of protocols and architecture.</p>
+<p>X.org is the free and open source implementation of the X Window System. X.org is also a foundation that oversees the development of X11.</p>
+<p>X11 is the latest version (since 1987) of the X architecture, and X10 is the first iteration of the project born with X in 1984.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="x10-and-cut-buffers">X10 and cut-buffers<a href="https://blog.mrvym.dev/how-copy-paste-works-on-linux#x10-and-cut-buffers" class="hash-link" aria-label="Lien direct vers X10 and cut-buffers" title="Lien direct vers X10 and cut-buffers">​</a></h2>
+<p>For context, the first release of X10 was in 1985. At that time, the ICCCM hadn't been released.
+Xorg was doing its own thing. They used a thing called <code>cut-buffer' or also known as </code>buffer-cut'.</p>
+<p>A cut-buffer works like a circular buffer of 8 buffers, ranging from CUTBUFFER0 to CUTBUFFER7.
+When a user tries to add a string to a cut buffer, each string is swapped to a different buffer.
+So the circular buffer is like a history of all copy-paste.</p>
+<p>Nowadays, there are no more programs that use a cut-buffer, or at least they used the cut-buffer and the new method.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="x11-support">X11 support<a href="https://blog.mrvym.dev/how-copy-paste-works-on-linux#x11-support" class="hash-link" aria-label="Lien direct vers X11 support" title="Lien direct vers X11 support">​</a></h2>
+<p>X has an object called 'selections'. It is basically a clipboard, but for a different use.
+There are THREE selections defined by ICCCM: Primary, Secondary, and Clipboard The ICCCM also makes a distinction between <code>Passive</code> and <code>Active</code> selections.</p>
+<p>Passive</p>
+<blockquote>
+<p>When some data is selected, the client handling the window where this selection is done transfers it somewhere, and no longer needs to care about it</p>
+</blockquote>
+<p>Active</p>
+<blockquote>
+<p>Transfer of data to a client requires the client "holding" the selection to actively participate in the exchange.</p>
+</blockquote>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="primary">PRIMARY<a href="https://blog.mrvym.dev/how-copy-paste-works-on-linux#primary" class="hash-link" aria-label="Lien direct vers PRIMARY" title="Lien direct vers PRIMARY">​</a></h4>
+<p>I is mostly used when you select some text with your mouse. You can use your mouse middle click to paste it.
+I said "mostly" because it depends on the software. Each X11 application decides which binding it uses to interact with a selection.</p>
+<p>So, as you understand, it's a `passive' selection. The user does not ask the system to copy this text.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="clipboard">CLIPBOARD<a href="https://blog.mrvym.dev/how-copy-paste-works-on-linux#clipboard" class="hash-link" aria-label="Lien direct vers CLIPBOARD" title="Lien direct vers CLIPBOARD">​</a></h4>
+<p>This is an <code>active</code> selection. It's used when the user wants to copy some data. It can be done with either <code>Ctrl-C</code> or the simpler <code>Mouse right click + copy</code>.</p>
+<p>In <code>vim</code> you could copy something with <code>*y</code> and <code>*p</code> or</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">set clipboard=unnamedplus</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copier le code" title="Copier" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>So when the user requests <code>Paste</code>, it will be the contents of the CLIPBOARD selection.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="secondary">SECONDARY<a href="https://blog.mrvym.dev/how-copy-paste-works-on-linux#secondary" class="hash-link" aria-label="Lien direct vers SECONDARY" title="Lien direct vers SECONDARY">​</a></h4>
+<p>To be honest, I looked for as much information as I could about this selection, but I couldn't find any application that used it for any good reason.</p>
+<p>In <code>vim</code> you could copy something in it with <code>+y</code> and <code>+p</code>.</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">set clipboard=unnamed</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copier le code" title="Copier" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="xdnd">XDND<a href="https://blog.mrvym.dev/how-copy-paste-works-on-linux#xdnd" class="hash-link" aria-label="Lien direct vers XDND" title="Lien direct vers XDND">​</a></h2>
+<p>Such a complex word, it's just the first letter of <code>X Drag and Drop Protocol</code>. When I did some research on the clipboard, I found information about drag and drop.</p>
+<p>When a drag starts, the source takes ownership of <code>XDNDSelection</code> (a structure inside X11), and when the mouse leaves the source, X11 sends a message to the target. At this point the user can release the mouse, the target gets a lot of information with a specific selection <code>XA_PRIMARY</code>. XA stands for XDNDAware, the module responsible for DND in X. With all this information, the target software could easily request the resource from the source software.
+I learn that within the first iteration of X, there are no optimizations when `target = source'.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="alias">Alias<a href="https://blog.mrvym.dev/how-copy-paste-works-on-linux#alias" class="hash-link" aria-label="Lien direct vers Alias" title="Lien direct vers Alias">​</a></h2>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">alias paste="xclip -o"</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">alias copy="xclip"</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copier le code" title="Copier" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>And so you can use like this.</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">cat LONG_FILE | copy </span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">paste | vim - </span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copier le code" title="Copier" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Sources :</p>
+<ul>
+<li><a href="https://x.org/releases/X11R7.6/doc/xorg-docs/specs/ICCCM/icccm.html" target="_blank" rel="noopener noreferrer">ICCCM</a></li>
+<li><a href="http://vimdoc.sourceforge.net/htmldoc/gui_x11.html#quoteplus" target="_blank" rel="noopener noreferrer">VimDoc</a></li>
+<li><a href="https://www.freedesktop.org/wiki/Specifications/ClipboardsWiki/" target="_blank" rel="noopener noreferrer">ClipbordWiki</a></li>
+<li><a href="https://superuser.com/questions/90257/what-is-the-difference-between-the-x-clipboards" target="_blank" rel="noopener noreferrer">StackOverflow - Diff between X Clip</a></li>
+<li><a href="https://freedesktop.org/wiki/Specifications/XDND/" target="_blank" rel="noopener noreferrer">XDND</a></li>
+</ul>]]></content:encoded>
+            <category>Linux</category>
+            <category>Xorg</category>
+            <category>Copy</category>
+            <category>Paste</category>
+        </item>
         <item>
             <title><![CDATA[Le plus petit segfault]]></title>
             <link>https://blog.mrvym.dev/le-plus-petit-segfault</link>

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_blog=self.webpackChunkmy_blog||[]).push([[2422],{9010:t=>{t.exports=JSON.parse('{"tag":{"label":"Xorg","permalink":"/tags/xorg","allTagsPath":"/tags","count":1,"unlisted":true},"listMetadata":{"permalink":"/tags/xorg","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
