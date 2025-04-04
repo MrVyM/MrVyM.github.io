@@ -6,44 +6,74 @@ tags:
 - Xorg   
 - Copy
 - Paste
-hide_title: false
-date: 1-1-1970 #2025-01-31
+date: 2025-04-04
 unlisted: true
 authors: [mrvym]
 ---
-# How Copy Paste works on Linux
+In this article, we will explore the internal workings of copy and paste in Linux. 
+First, let me provide some context. There is a manual, almost like an RFC. 
 
-In this article, we will explore the internal functioning of Copy-Paste in Linux. 
-First, let me introduce some context. There is a manual, almost like an RFC. 
-
-The Inter-Communication Client Conventions Manual (for short ICCCM), which imposes some rules. 
-The first version was published in July 1989 and the second in 1994. 
+The Inter-Communication Client Conventions Manual (ICCCM for short), which lays down some rules. 
+The first version was published in July 1989, the second in 1994. 
 This manual, written 30 years ago, is therefore the reference for the subject.  
 
-<!-- truncate -->
+<!-- truncate --> 
+## First some history 
+### X vs X.org vs X11 
+The X Window System, also known as X, is old. Written in 1984, it was the default windowing system for most Unix systems.
+But X is not the implementation, it is more a set of protocols and architecture.
+
+X.org is the free and open source implementation of the X Window System. X.org is also a foundation that oversees the development of X11.
+
+X11 is the latest version (since 1987) of the X architecture, and X10 is the first iteration of the project born with X in 1984.
 
 ## X10 and cut-buffers
+For context, the first release of X10 was in 1985. At that time, the ICCCM hadn't been released.
+Xorg was doing its own thing. They used a thing called `cut-buffer' or also known as `buffer-cut'.
 
-For context, first release of X10 was in 1985. At this time, the ICCCM wasn't released.
-Xorg made it's own custom way to works. They used a thing called `cut-buffer` or also knows as `buffer-cut`.
-
-A cut-buffer works like a circular buffer of 8 buffers, which begins from CUTBUFFER0 to CUTBUFFER7.
-When a user want add a string in a cut-buffer, every string switches to another buffer. 
+A cut-buffer works like a circular buffer of 8 buffers, ranging from CUTBUFFER0 to CUTBUFFER7.
+When a user tries to add a string to a cut buffer, each string is swapped to a different buffer. 
 So the circular buffer is like a history of all copy-paste.
 
-Nowday, there is no more programs which used a cut-buffer or at least they used the cut-buffer and the new way.
+Nowadays, there are no more programs that use a cut-buffer, or at least they used the cut-buffer and the new method.
 
-## Support by X11 
+## X11 support 
+X has an object called 'selections'. It is basically a clipboard, but for a different use.
+There are THREE selections defined by ICCCM: Primary, Secondary, and Clipboard The ICCCM also makes a distinction between `Passive` and `Active` selections.
 
-X got a objet that called 'selections'. There are essentially clipboards but for different use.
-There are THREE selections defines by ICCCM : Primary, Secondary and Clipboard
-#### PRIMARY
+Passive
+> When some data is selected, the client handling the window where this selection is done transfers it somewhere, and no longer needs to care about it
 
-#### SECONDARY
+Active
+> Transfer of data to a client requires the client "holding" the selection to actively participate in the exchange.
 
-  - Unused
+#### PRIMARY 
+I is mostly used when you select some text with your mouse. You can use your mouse middle click to paste it. 
+I said "mostly" because it depends on the software. Each X11 application decides which binding it uses to interact with a selection.
 
-#### CLIPBOARD
+So, as you understand, it's a `passive' selection. The user does not ask the system to copy this text. 
+
+#### CLIPBOARD 
+This is an `active` selection. It's used when the user wants to copy some data. It can be done with either `Ctrl-C` or the simpler `Mouse right click + copy`.
+
+In `vim` you could copy something with `*y` and `*p` or 
+```
+set clipboard=unnamedplus
+```
+So when the user requests `Paste`, it will be the contents of the CLIPBOARD selection.
+#### SECONDARY 
+To be honest, I looked for as much information as I could about this selection, but I couldn't find any application that used it for any good reason.
+
+In `vim` you could copy something in it with `+y` and `+p`.
+```
+set clipboard=unnamed
+```
+
+## XDND 
+Such a complex word, it's just the first letter of `X Drag and Drop Protocol`. When I did some research on the clipboard, I found information about drag and drop. 
+
+When a drag starts, the source takes ownership of `XDNDSelection` (a structure inside X11), and when the mouse leaves the source, X11 sends a message to the target. At this point the user can release the mouse, the target gets a lot of information with a specific selection `XA_PRIMARY`. XA stands for XDNDAware, the module responsible for DND in X. With all this information, the target software could easily request the resource from the source software. 
+I learn that within the first iteration of X, there are no optimizations when `target = source'.
 
 ## Alias
 
@@ -65,3 +95,4 @@ Sources :
 - [VimDoc](http://vimdoc.sourceforge.net/htmldoc/gui_x11.html#quoteplus)
 - [ClipbordWiki](https://www.freedesktop.org/wiki/Specifications/ClipboardsWiki/)
 - [StackOverflow - Diff between X Clip](https://superuser.com/questions/90257/what-is-the-difference-between-the-x-clipboards)
+- [XDND](https://freedesktop.org/wiki/Specifications/XDND/)
