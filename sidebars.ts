@@ -18,7 +18,6 @@ const sidebars: SidebarsConfig = {
 
   // But you can create a sidebar manually
   tutorialSidebar: [
-    'sas-or-not-sas',
   ],
 };
 

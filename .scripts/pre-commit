@@ -33,7 +33,7 @@ for article in $(find . -name "*.md*"); do
     title=$(cat $article | grep '^title:' | cut -d ':' -f 2 | xargs echo -n)
 
     if [[ $slug != "draft" ]] && [[ $slug != "todo" ]]; then
-      echo $article
+      echo "[$title]"
       echo -e "\t lines : $(cat $article | wc -l)"
       echo "- [ ] [$title](/$slug)" >>$file_draft
     fi
