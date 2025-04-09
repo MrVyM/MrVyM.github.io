@@ -89,7 +89,20 @@ const config: Config = {
     ],
   ],
   themeConfig: {
-    // Replace with your project's social card
+    // https://prismjs.com/#supported-languages 
+    prism: {
+      theme: prismThemes.github,
+      darkTheme: prismThemes.dracula,
+      additionalLanguages: [ 
+        "diff",
+        "makefile",
+        "bash",
+        "vim",
+        "nasm",
+        "git",
+        "vhdl",
+      ],
+    },
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
       defaultMode: 'dark',
@@ -160,10 +173,6 @@ const config: Config = {
         }
       ],
       copyright: `Copyright © ${new Date().getFullYear()} mrvym.dev, Inc. Thanks to <href link="https://docusaurus.io/">Docusaurus.</href>`,
-    },
-    prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
   stylesheets: [

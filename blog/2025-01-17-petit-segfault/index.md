@@ -114,7 +114,7 @@ Au passage, on remarque que son symbole est bien dans le segment `.text`.
 
 Voici une version simplifiée du code (la fonction complète est assez complexe) :
 
-```asm
+```nasm
 _start: 
     xor %ebp, %ebp            
     mov (%rsp), %edi          

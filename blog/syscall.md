@@ -11,9 +11,8 @@ hide_title: false
 date: 01/01/1970
 ---
 # Syscall on OpenBSD
-Les versions récentes d'OpenBSD empêchent l'utilisation directe des syscalls depuis le code utilisateur, en imposant une vérification dans l'éditeur de liens dynamique (`ld.so`). 
-Cela renforce la sécurité en rendant les exploits plus difficiles. 
-Ce rapport explore la mise en place de cette protection, son fonctionnement, et comment la désactiver en modifiant le code source du système.
+Les versions récentes d'OpenBSD empêchent l'utilisation directe des syscalls depuis le code utilisateur, en imposant une vérification dans le linker (`ld.so`). 
+Cela renforce la sécurité en rendant les exploits plus difficiles. Cet article explore la mise en place de cette protection, son fonctionnement, et comment la désactiver en modifiant le code source du kernel.
 
 <!-- truncate --> 
 
@@ -87,7 +86,7 @@ On apprend que :
 
 J'en déduis que l'on cherche ou est `pinsyscall(1)`, trouver le code qui l'appelle puis le fix.
 
-```sh
+```sh 
 $ cd /usr/src
 # Un peu de recherche sur le mode clef syscall plus tard
 $ grep -r "PINSYSCALL"
@@ -125,11 +124,11 @@ Deux fichiers ont l'air intéressant celui de ld.so (cf le man que l'on a lu sur
 
 Après un rapide grep dans le directory du syscall.h pour trouver qui l'utilise. Je trouve le fichier `resolve.c`.
 Cela me permet de découvrir l'implémentation de la fonction `pinsyscall` et de la struct.
-```c
-# /usr/src/libexec/ld.so/resolve.c : line 782
+```c title="/usr/src/libexec/ld.so/resolve.c "
+# line 782
 struct pinsyscalls {
-u_int offset;
-u_int sysno;
+  u_int offset;
+  u_int sysno;
 }
 ```
 #### Le dossier sys/sys
