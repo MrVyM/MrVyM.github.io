@@ -18,10 +18,10 @@ Cela renforce la sécurité en rendant les exploits plus difficiles. Cet article
 
 ## Pinsyscalls ? 
 
-Avant de voir comment désactiver un pinsyscalls, cela peut etre intérresant de voir ce que cela signifie. 
-Le kernel OpenBSD a mise en place une sécurité particuliere sur ces syscalls. Cela a pour but de faire en sorte qu'un syscall ne puisse etre call que dans une certain plage d'address dans un binaire. 
+Avant de voir comment désactiver un pinsyscalls, cela peut être intéressant de voir ce que cela signifie. 
+Le kernel OpenBSD a mise en place une sécurité particulière sur ces syscalls. Cela a pour but de faire en sorte qu'un syscall ne puisse être call que dans une certaine plage d'addresse dans un binaire. 
 
-Cette sécurité veut dire que l'on ne peut pas executer un syscall à la main (cf [Coder le sycall](#coder-le-syscall)).
+Cette sécurité veut dire que l'on ne peut pas exécuter un syscall à la main (cf [Coder le sycall](#coder-le-syscall)).
 
 ## Trouver le num d'un syscall 
 
