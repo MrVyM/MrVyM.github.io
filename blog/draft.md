@@ -9,8 +9,8 @@ unlisted: true
 # Les articles en cours d'ecriture
 <!-- truncate -->
 Je travaille actuellement sur :
-- [ ] [How to code plot and chart in Docusaurus with MDX](/plot-chart-docusaurus-mdx)
-- [ ] [Syscall on OpenBSD](/syscall-on-openbsd)
-- [ ] [Sleep from Python to Electronics](/sleep-from-python-to-electronics)
 - [ ] [Protect a program to Pkill](/protect-a-programm-to-pkill)
+- [ ] [Sleep from Python to Electronics](/sleep-from-python-to-electronics)
 - [ ] [Comment marche le bus 1-Wire ?](/one-wire-protocol)
+- [ ] [Désactiver les pinsyscalls sur OpenBSD](/pinsyscall-on-openbsd)
+- [ ] [How to code plot and chart in Docusaurus with MDX](/plot-chart-docusaurus-mdx)
