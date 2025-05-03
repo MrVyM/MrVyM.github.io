@@ -12,5 +12,4 @@ Je travaille actuellement sur :
 - [ ] [Protect a program to Pkill](/protect-a-programm-to-pkill)
 - [ ] [Sleep from Python to Electronics](/sleep-from-python-to-electronics)
 - [ ] [Comment marche le bus 1-Wire ?](/one-wire-protocol)
-- [ ] [Désactiver les pinsyscalls sur OpenBSD](/pinsyscall-on-openbsd)
 - [ ] [How to code plot and chart in Docusaurus with MDX](/plot-chart-docusaurus-mdx)

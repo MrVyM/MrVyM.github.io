@@ -6,10 +6,9 @@ tags:
 - syscall
 - pinsyscall
 - kernel
-unlisted: true
 authors: mrvym
 hide_title: false
-date: 01/01/1970
+date: 03/05/2025
 ---
 # Désactiver les pinsyscalls sur OpenBSD
 Les versions récentes d'OpenBSD empêchent l'utilisation directe des syscalls depuis le code utilisateur, en imposant une vérification dans le linker (`ld.so`). 
