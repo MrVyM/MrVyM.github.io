@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmrvym_blog=self.webpackChunkmrvym_blog||[]).push([[1420],{8001:a=>{a.exports=JSON.parse('{"tag":{"label":"make","permalink":"/tags/make","allTagsPath":"/tags","count":1,"unlisted":false},"listMetadata":{"permalink":"/tags/make","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);

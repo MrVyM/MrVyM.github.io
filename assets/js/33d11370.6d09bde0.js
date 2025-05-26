@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmrvym_blog=self.webpackChunkmrvym_blog||[]).push([[3225],{5403:a=>{a.exports=JSON.parse('{"tag":{"label":"macro","permalink":"/tags/macro","allTagsPath":"/tags","count":1,"unlisted":false},"listMetadata":{"permalink":"/tags/macro","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);

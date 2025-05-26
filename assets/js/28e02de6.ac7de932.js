@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmrvym_blog=self.webpackChunkmrvym_blog||[]).push([[8997],{5035:a=>{a.exports=JSON.parse('{"tag":{"label":"openbsd","permalink":"/tags/openbsd","allTagsPath":"/tags","count":1,"unlisted":false},"listMetadata":{"permalink":"/tags/openbsd","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
