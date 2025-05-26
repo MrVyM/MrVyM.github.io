@@ -34,7 +34,7 @@ for article in $(find . -name "*.md*"); do
 
     if [[ $slug != "draft" ]] && [[ $slug != "todo" ]]; then
       echo "[$title]"
-      echo -e "\t lines : $(cat $article | wc -l)"
+      echo -e "\t lines : $(cat $article | wc -l) words : $(cat $article | wc -w)"
       echo "- [ ] [$title](/$slug)" >>$file_draft
     fi
   fi
