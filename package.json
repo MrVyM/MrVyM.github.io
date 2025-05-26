@@ -1,6 +1,6 @@
 {
-  "name": "my-blog",
-  "version": "0.0.0",
+  "name": "mrvym-blog",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
