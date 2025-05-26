@@ -43,7 +43,7 @@ const config: Config = {
         {
           lastmod: 'date',
           changefreq: 'weekly',
-          priority: 0.5,
+          priority: 1,
           ignorePatterns: ['/tags/**'],
           filename: 'sitemap.xml',
           createSitemapItems: async (params) => {
@@ -99,6 +99,7 @@ const config: Config = {
         "bash",
         "vim",
         "nasm",
+        "armasm",
         "git",
         "vhdl",
       ],
