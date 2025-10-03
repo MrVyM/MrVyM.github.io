@@ -4,11 +4,184 @@
         <title>MrVyM.dev Blog</title>
         <link>https://blog.mrvym.dev/</link>
         <description>MrVyM.dev Blog</description>
-        <lastBuildDate>Sat, 03 May 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 03 Aug 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>fr</language>
         <copyright>Copyright © ${new Date().getFullYear()} MrVym.dev.</copyright>
+        <item>
+            <title><![CDATA[Understanding and mastering inter-processor communication on STM32MP]]></title>
+            <link>https://blog.mrvym.dev/understanding-ipcc-on-stm32</link>
+            <guid>https://blog.mrvym.dev/understanding-ipcc-on-stm32</guid>
+            <pubDate>Sun, 03 Aug 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[In modern embedded systems, it is common to find multiple processor cores (CPUs) working together, each potentially running a different operating system — for example, Linux on a Cortex-A core and an RTOS such as FreeRTOS on a Cortex-M.]]></description>
+            <content:encoded><![CDATA[<p>In modern embedded systems, it is common to find multiple processor cores (CPUs) working together, each potentially running a different operating system — for example, Linux on a Cortex-A core and an RTOS such as FreeRTOS on a Cortex-M.</p>
+<p>Communication between these cores is essential, but there is no single standard to achieve this. OpenAMP, with its RPMsg and RemoteProc components, provides a flexible and widely adopted solution for intercommunication between Linux and RTOS or bare-metal systems.</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-will-and-will-not-be-covered">What will and will not be covered<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#what-will-and-will-not-be-covered" class="hash-link" aria-label="Lien direct vers What will and will not be covered" title="Lien direct vers What will and will not be covered" translate="no">​</a></h2>
+<p>This article focuses on the principles of inter-processor communication between heterogeneous processors (Linux and RTOS) in embedded systems, using OpenAMP and its components. We will explain how the key mechanisms work (RPMsg, RemoteProc, IPCC, VirtIO). We will not dive into implementation details (assembly code, hardware registers).</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="prerequisite">Prerequisite<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#prerequisite" class="hash-link" aria-label="Lien direct vers Prerequisite" title="Lien direct vers Prerequisite" translate="no">​</a></h2>
+<ul>
+<li><strong>ARM Programming (STM32):</strong> basic knowledge of the ARM architecture.</li>
+<li><strong>C language:</strong> used for embedded development.</li>
+<li><strong>Understanding of an RTOS or Linux:</strong> basic concepts of real-time operating systems (RTOS) and/or Linux.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="targeted-audience">Targeted audience<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#targeted-audience" class="hash-link" aria-label="Lien direct vers Targeted audience" title="Lien direct vers Targeted audience" translate="no">​</a></h2>
+<ul>
+<li><strong>Engineering students</strong> interested in exploring multi-core embedded systems.</li>
+<li><strong>Beginner engineers</strong> in the field of embedded software.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="global-overview">Global Overview<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#global-overview" class="hash-link" aria-label="Lien direct vers Global Overview" title="Lien direct vers Global Overview" translate="no">​</a></h2>
+<p>To better understand the architecture, here’s a diagram that illustrates the separation between the Linux and RTOS environments, and the communication mechanisms between them:</p>
+<p><img decoding="async" loading="lazy" alt="Global Overview" src="https://blog.mrvym.dev/assets/images/Global_overview-91f71c638724a5e7d4653340ab2eec7d.png" width="675" height="810" class="img_ev3q"></p>
+<blockquote>
+<p><em>Figure 1: OpenAMP architecture overview between Linux and RTOS</em></p>
+</blockquote>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="booting-and-managing-the-remote-core">Booting and managing the remote core<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#booting-and-managing-the-remote-core" class="hash-link" aria-label="Lien direct vers Booting and managing the remote core" title="Lien direct vers Booting and managing the remote core" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="how-does-ipcc-work">How does IPCC work?<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#how-does-ipcc-work" class="hash-link" aria-label="Lien direct vers How does IPCC work?" title="Lien direct vers How does IPCC work?" translate="no">​</a></h3>
+<p>IPCC (Inter Processor Communication Channel) is a hardware peripheral found on some STM32 microcontrollers, such as the STM32MP1 family. It allows interrupts to be triggered between microcontrollers.</p>
+<p>This component consists of several channels. For example, the STM32MP257F has 16 channels on IPCC1 <a href="https://wiki.st.com/stm32mpu/wiki/IPCC_internal_peripheral#On_STM32MP2-lines_3" target="_blank" rel="noopener noreferrer">^MP257F Lines</a>.</p>
+<p><img decoding="async" loading="lazy" alt="IPCC Peripheral" src="https://blog.mrvym.dev/assets/images/IPCC_peripheral-5dffa79f2d4ff672ab2f93226c953be2.png" width="844" height="355" class="img_ev3q"></p>
+<blockquote>
+<p><em>Figure 2: How the IPCC hardware component is working for 6 channel (STM32MP157F)</em></p>
+</blockquote>
+<p>A board may include multiple IPCC peripherals. They enable communication between two or more processors. The IPCC2 peripheral allows communication between all Cortex cores on the board.</p>
+<p><img decoding="async" loading="lazy" alt="IPCC Features Implementation" src="https://blog.mrvym.dev/assets/images/IPCC_Features_Implementation-05d0be5a0db17ae89682f711e9ba3aaf.png" width="988" height="437" class="img_ev3q"></p>
+<blockquote>
+<p><em>Figure 3: Extract from the documentation of the STM32MP257F</em></p>
+</blockquote>
+<p>Each channel has a specific function. For example, channel 3 <a href="https://wiki.st.com/stm32mpu/wiki/IPCC_internal_peripheral#On_STM32MP2-lines_3" target="_blank" rel="noopener noreferrer">^MP257F Lines</a> is used by the RemoteProc framework to shut down the Cortex-M33.</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="life-cycle-management">Life Cycle Management<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#life-cycle-management" class="hash-link" aria-label="Lien direct vers Life Cycle Management" title="Lien direct vers Life Cycle Management" translate="no">​</a></h3>
+<p>RemoteProc <sup><a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#user-content-fn-remoteproc-f76317" id="user-content-fnref-remoteproc-f76317" data-footnote-ref="true" aria-describedby="footnote-label" class="footnoteRefStickyNavbar_i6ta">1</a></sup> is a framework used to manage the lifecycle (boot, shutdown, supervision) of a remote processor. On Linux, RemoteProc can be used to load a firmware image onto a Cortex-M core (running an RTOS or bare-metal), monitor its state, or shut it down.</p>
+<div class="language-c codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-c codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">int</span><span class="token plain"> </span><span class="token function" style="color:rgb(80, 250, 123)">remoteproc_start</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">struct</span><span class="token plain"> </span><span class="token class-name">remoteproc</span><span class="token plain"> </span><span class="token operator">*</span><span class="token plain">rproc</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"> </span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">int</span><span class="token plain"> </span><span class="token function" style="color:rgb(80, 250, 123)">remoteproc_stop</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">struct</span><span class="token plain"> </span><span class="token class-name">remoteproc</span><span class="token plain"> </span><span class="token operator">*</span><span class="token plain">rproc</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"> </span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">int</span><span class="token plain"> </span><span class="token function" style="color:rgb(80, 250, 123)">remoteproc_shutdown</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">struct</span><span class="token plain"> </span><span class="token class-name">remoteproc</span><span class="token plain"> </span><span class="token operator">*</span><span class="token plain">rproc</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><br></span></code></pre></div></div>
+<p>RemoteProc relies on specific drivers and on the firmware’s resource table to allocate shared memory and required peripherals.</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="role-of-ipcc-in-triggering-remote-boot">Role of IPCC in triggering remote boot<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#role-of-ipcc-in-triggering-remote-boot" class="hash-link" aria-label="Lien direct vers Role of IPCC in triggering remote boot" title="Lien direct vers Role of IPCC in triggering remote boot" translate="no">​</a></h3>
+<p>IPCC plays a key role in booting the remote core. When Linux wants to start a firmware on an RTOS core, it uses IPCC to send an initialization signal. This signal triggers the remote core boot process, allowing it to initialize its own environment. IPCC can also be used to synchronize other actions, such as data exchange or critical event notification.</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="inter-processor-data-exchange">Inter-Processor Data Exchange<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#inter-processor-data-exchange" class="hash-link" aria-label="Lien direct vers Inter-Processor Data Exchange" title="Lien direct vers Inter-Processor Data Exchange" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="virtio">VirtIO<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#virtio" class="hash-link" aria-label="Lien direct vers VirtIO" title="Lien direct vers VirtIO" translate="no">​</a></h3>
+<p>Communication between cores primarily takes place through shared memory (SRAM).</p>
+<p><img decoding="async" loading="lazy" alt="Shared Memory Cortex" src="https://blog.mrvym.dev/assets/images/Shared_memory_cortex-096f503196f3821dadac6eb1b5f588f2.png" width="1550" height="322" class="img_ev3q"></p>
+<p>VirtIO is a standard that defines a protocol for communication between drivers and devices of different types.</p>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>astuce</div><div class="admonitionContent_BuS1"><p>The choice of shared memory must consider security (restricted access), performance (latency, bandwidth), and manageability (size, alignment).</p></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="ring-buffer">Ring Buffer<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#ring-buffer" class="hash-link" aria-label="Lien direct vers Ring Buffer" title="Lien direct vers Ring Buffer" translate="no">​</a></h4>
+<p>The framework uses ring buffers, which can be seen as channels with their own queues.</p>
+<p>VirtIO relies on a shared-memory ring buffer mechanism called VRing. Each VRing is made of two parts:</p>
+<ul>
+<li><strong><code>AVAIL</code></strong>: A ring where the sender posts available buffers.</li>
+<li><strong><code>USED</code></strong>: A ring where the receiver posts completed buffers.</li>
+</ul>
+<p>Each side writes only to its own ring (sender to <code>AVAIL</code>, receiver to <code>USED</code>), preventing race conditions.
+VirtIO supports multiple VRings, allowing concurrent communication channels (e.g., one for commands, one for data, one for control messages).</p>
+<hr>
+<p><img decoding="async" loading="lazy" alt="Resource assignement" src="https://blog.mrvym.dev/assets/images/resource-assignment-886116124d076224ccb42079495d78d3.svg" width="1172" height="340" class="img_ev3q"></p>
+<blockquote>
+<p><em>Figure 4: Resource assignement example for IPC</em></p>
+</blockquote>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="rpmsg-abstraction">RPMsg abstraction<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#rpmsg-abstraction" class="hash-link" aria-label="Lien direct vers RPMsg abstraction" title="Lien direct vers RPMsg abstraction" translate="no">​</a></h3>
+<p>RPMsg is a VirtIO-based messaging bus that allows kernel drivers to communicate with remote processors present in the system. It provides the infrastructure to exchange wire-protocol messages between client drivers. These drivers can then expose appropriate user space interfaces if needed.</p>
+<p>The RPMsg client driver implements a service associated with the remote processor. This driver is probed by the RPMsg framework when a corresponding service is announced by the remote processor via a “new service announcement” RPMsg message.</p>
+<p><img decoding="async" loading="lazy" alt="RPMSG Flow" src="https://blog.mrvym.dev/assets/images/rpmsg_flow-c1911cb204ff51c97f84f918dbb522fb.jpg" width="951" height="960" class="img_ev3q"></p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="rpmsg-client-driver">RPMsg Client Driver<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#rpmsg-client-driver" class="hash-link" aria-label="Lien direct vers RPMsg Client Driver" title="Lien direct vers RPMsg Client Driver" translate="no">​</a></h4>
+<p>The RPMsg client driver serves to handle a specific communication service between cores. For example, if the remote core exposes a logging or file-access service, an RPMsg client driver on Linux receives the message and routes it to the appropriate Linux subsystem.</p>
+<p>It abstracts the low-level messaging details, allowing developers to implement high-level inter-core services (e.g., sensor acquisition, control, logging, RPC).</p>
+<h5 class="anchor anchorWithStickyNavbar_LWe7" id="why-recode-this-driver">Why recode this driver?<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#why-recode-this-driver" class="hash-link" aria-label="Lien direct vers Why recode this driver?" title="Lien direct vers Why recode this driver?" translate="no">​</a></h5>
+<p>You may want to re-implement or customize an RPMsg client driver in these situations:</p>
+<ul>
+<li>You are designing a custom protocol or service not covered by existing drivers.</li>
+<li>You need to support a proprietary message format or payload.</li>
+<li>You want to expose RPMsg messages to user space differently (e.g., via character device, netlink, or custom interface).</li>
+<li>You need to implement secure or encrypted communication on top of RPMsg.</li>
+</ul>
+<p>By customizing the RPMsg client driver, developers can fully adapt the communication stack to their application's needs.</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="openamp-high-level-interface">OpenAMP high-level interface<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#openamp-high-level-interface" class="hash-link" aria-label="Lien direct vers OpenAMP high-level interface" title="Lien direct vers OpenAMP high-level interface" translate="no">​</a></h3>
+<p>OpenAMP’s high-level interface integrates and abstracts the complexities of managing remote cores and orchestrating inter-processor communication (IPC) in heterogeneous multicore environments. By leveraging RemoteProc for lifecycle management, RPMsg for robust messaging, and VirtIO for virtual device abstraction.</p>
+<p><img decoding="async" loading="lazy" alt="OpenAMP overview" src="https://blog.mrvym.dev/assets/images/overview-architecture-0f7352d204ab237338561a3aeeec27e5.svg" width="1247" height="529" class="img_ev3q"></p>
+<p>OpenAMP enables seamless control and data exchange between master and remote processors—regardless of whether they run Linux, RTOS, or bare-metal firmware.</p>
+<p>The framework’s support for various topologies (star, chain, or combined) and its compatibility with industry-standard IPC mechanisms (such as IPCC, Mailbox, and RPMsg) further enhance its flexibility and reliability in real-world deployments.
+<img decoding="async" loading="lazy" alt="OpenAMP overview" src="https://blog.mrvym.dev/assets/images/topo-types-132bb39a96dc425b7febc16ed8cd0bf3.svg" width="945" height="340" class="img_ev3q"></p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="openamp-proxy">OpenAMP Proxy<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#openamp-proxy" class="hash-link" aria-label="Lien direct vers OpenAMP Proxy" title="Lien direct vers OpenAMP Proxy" translate="no">​</a></h4>
+<p>The framework’s proxy mechanism extends this interoperability, allowing system calls such as open, read, and write to be transparently forwarded from an RTOS or bare-metal context to Linux, effectively giving remote cores access to host filesystem resources without requiring a full OS stack.</p>
+<p>This is really valuable in scenarios where resource-constrained remote cores need to offload I/O operations to a more capable master processor.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="whats-the-difference-between-linux-and-freertos-on-ipc">What's the difference between Linux and FreeRTOS on IPC?<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#whats-the-difference-between-linux-and-freertos-on-ipc" class="hash-link" aria-label="Lien direct vers What's the difference between Linux and FreeRTOS on IPC?" title="Lien direct vers What's the difference between Linux and FreeRTOS on IPC?" translate="no">​</a></h2>
+<p>The main difference between Linux and FreeRTOS regarding Inter-Processor Communication (IPC) lies in the abstraction layers and available mechanisms:</p>
+<p>Linux: Drivers and frameworks (RemoteProc, RPMsg, VirtIO) are tightly integrated into the kernel. This integration provides fine-grained control over resources and peripherals, enabling robust and scalable IPC solutions. For instance, on STM32MP1xx, Linux can communicate with the Cortex-M4 core using OpenAMP-based virtual UART devices, which appear as TTY devices in the Linux filesystem and allow for message passing and synchronization via shared memory and IPCC peripherals.</p>
+<p>FreeRTOS (or RTOS in general): OpenAMP provides a lightweight library implementing similar concepts as Linux, but with an interface simplified for real-time constraints. Each vendor porting OpenAMP provides an implementation of libmetal for their system. For example, STM32MP1xx has strong support for OpenAMP, with documentation and examples dedicated to testing the library on these devices.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="libmetal">LibMetal<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#libmetal" class="hash-link" aria-label="Lien direct vers LibMetal" title="Lien direct vers LibMetal" translate="no">​</a></h3>
+<p>LibMetal is the abstraction layer used by OpenAMP to manage hardware resources and portability. On FreeRTOS, libmetal is typically provided by the vendor and adapted to the specific hardware and RTOS environment, enabling OpenAMP to function across different platforms and RTOSes.</p>
+<p>For instance, on STM32MP1xx, the OpenAMP middleware initializes and configures the IPCC peripheral through HAL, sets up the OpenAMP/RPMsg framework, and creates virtual UART instances for IPC. The Cortex-M4 firmware (running FreeRTOS or bare metal) communicates with Linux on the Cortex-A7, using shared memory and IPCC for synchronization.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="closing-remarks">Closing remarks<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#closing-remarks" class="hash-link" aria-label="Lien direct vers Closing remarks" title="Lien direct vers Closing remarks" translate="no">​</a></h2>
+<p>OpenAMP is a powerful framework for intercommunication between Linux and RTOS or bare-metal cores in multi-core embedded systems. It relies on open standards (RPMsg, VirtIO, RemoteProc) and uses hardware peripherals such as IPCC for synchronization. Understanding these mechanisms is essential to designing modern, flexible, and high-performance embedded systems.</p>
+<p>However, it’s important to remember that, like in any field (and especially in IT) this technology is just one among many. If this topic has piqued your interest, I encourage you to learn more about Symmetric Multi-Processing <sup><a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#user-content-fn-smp-f76317" id="user-content-fnref-smp-f76317" data-footnote-ref="true" aria-describedby="footnote-label" class="footnoteRefStickyNavbar_i6ta">2</a></sup> (SMP).</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="glossary">Glossary<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#glossary" class="hash-link" aria-label="Lien direct vers Glossary" title="Lien direct vers Glossary" translate="no">​</a></h2>
+<ul>
+<li><strong>LCM</strong> – Life Cycle Management of remote processor: managing the remote processor's lifecycle (boot, stop, supervision).</li>
+<li><strong>RPMsg</strong> – Lightweight messaging protocol used over shared memory.</li>
+<li><strong>RemoteProc</strong> – Framework for booting and managing remote cores.</li>
+<li><strong>IPCC</strong> – Hardware peripheral for signaling between processors.</li>
+<li><strong>AMP</strong> – Asymmetric Multi-Processing: architecture where multiple processors run different operating systems.</li>
+<li><strong>OpenAMP</strong> – Middleware for AMP communication (based on RPMsg + RemoteProc).</li>
+<li><strong>VirtIO</strong> - Standard that allows virtual machines to efficiently access simplified virtual devices, such as network and storage.</li>
+<li><strong>VRing</strong> – A data structure (ring buffer) defined by the VirtIO specification, used to organize and exchange buffers.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="references-and-further-reading">References and Further Reading<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#references-and-further-reading" class="hash-link" aria-label="Lien direct vers References and Further Reading" title="Lien direct vers References and Further Reading" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="virtio-mechanisms">Virtio Mechanisms<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#virtio-mechanisms" class="hash-link" aria-label="Lien direct vers Virtio Mechanisms" title="Lien direct vers Virtio Mechanisms" translate="no">​</a></h3>
+<ul>
+<li><a href="https://docs.kernel.org/driver-api/virtio/virtio.html" target="_blank" rel="noopener noreferrer">Linux Virtio</a></li>
+<li><a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html" target="_blank" rel="noopener noreferrer">Virtio Specification v1.2</a></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ipcc-mechanisms">IPCC Mechanisms<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#ipcc-mechanisms" class="hash-link" aria-label="Lien direct vers IPCC Mechanisms" title="Lien direct vers IPCC Mechanisms" translate="no">​</a></h3>
+<ul>
+<li><a href="https://wiki.st.com/stm32mpu/wiki/IPCC_internal_peripheral#Peripheral_overview" target="_blank" rel="noopener noreferrer">STM32 IPCC</a></li>
+<li><a href="https://docs.zephyrproject.org/latest/services/ipc/ipc_service/ipc_service.html" target="_blank" rel="noopener noreferrer">Zephyr IPC Service</a></li>
+<li><a href="https://www.st.com/resource/en/application_note/an5617-stm32h745755-and-stm32h747757-lines-interprocessor-communications-stmicroelectronics.pdf" target="_blank" rel="noopener noreferrer">AN5617: IPCC Application Note</a></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="openamp-library">OpenAMP Library<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#openamp-library" class="hash-link" aria-label="Lien direct vers OpenAMP Library" title="Lien direct vers OpenAMP Library" translate="no">​</a></h3>
+<ul>
+<li><a href="https://www.openampproject.org/docs/whitepapers/Introduction_to_OpenAMPlib_v1.1a.pdf" target="_blank" rel="noopener noreferrer">Introduction to OpenAMP Library (Whitepaper)</a></li>
+<li><a href="https://wiki.st.com/stm32mpu/wiki/Coprocessor_management_overview" target="_blank" rel="noopener noreferrer">Coprocessor Management Overview on STM32MPx</a></li>
+<li><a href="https://www.youtube.com/watch?v=QzICJz-xRzk" target="_blank" rel="noopener noreferrer">STM32 Dual Core - Inter-core communication using HSEM (YouTube)</a></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="rpmsg">RPMsg<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#rpmsg" class="hash-link" aria-label="Lien direct vers RPMsg" title="Lien direct vers RPMsg" translate="no">​</a></h3>
+<ul>
+<li><a href="https://wiki.st.com/stm32mpu/wiki/Linux_RPMsg_framework_overview" target="_blank" rel="noopener noreferrer">Linux RPMsg on OpenStLinux</a></li>
+<li><a href="https://wiki.st.com/stm32mpu/wiki/Getting_started/STM32MP1_boards/STM32MP157x-EV1/Develop_on_Arm%C2%AE_Cortex%C2%AE-M4/Modify,_rebuild_and_reload_a_firmware" target="_blank" rel="noopener noreferrer">Develop on Arm (STM32MP157x-EV1)</a></li>
+<li><a href="https://github.com/STMicroelectronics/linux/blob/v6.6-stm32mp/include/linux/rpmsg.h" target="_blank" rel="noopener noreferrer">Linux RPMsg driver source</a></li>
+<li><a href="https://wiki.st.com/stm32mpu/wiki/Exchanging_buffers_with_the_coprocessor" target="_blank" rel="noopener noreferrer">Exchanging buffers with RPMsg</a></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="additional-resources">Additional resources<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#additional-resources" class="hash-link" aria-label="Lien direct vers Additional resources" title="Lien direct vers Additional resources" translate="no">​</a></h3>
+<ul>
+<li><a href="https://github.com/diegosueiro/meta-ipc" target="_blank" rel="noopener noreferrer">Yocto meta-ipc layer</a></li>
+</ul>
+<!-- -->
+<section data-footnotes="true" class="footnotes"><h2 class="anchor anchorWithStickyNavbar_LWe7 sr-only" id="footnote-label">Footnotes<a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#footnote-label" class="hash-link" aria-label="Lien direct vers Footnotes" title="Lien direct vers Footnotes" translate="no">​</a></h2>
+<ol>
+<li id="user-content-fn-remoteproc-f76317">
+<p><a href="https://docs.kernel.org/staging/remoteproc.html" target="_blank" rel="noopener noreferrer">https://docs.kernel.org/staging/remoteproc.html</a> <a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#user-content-fnref-remoteproc-f76317" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-smp-f76317">
+<p><a href="https://en.wikipedia.org/wiki/Symmetric_multiprocessing" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Symmetric_multiprocessing</a> <a href="https://blog.mrvym.dev/understanding-ipcc-on-stm32#user-content-fnref-smp-f76317" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>]]></content:encoded>
+            <category>stm32</category>
+            <category>IPC</category>
+            <category>OpenStLinux</category>
+            <category>IPCC</category>
+            <category>ARM</category>
+            <category>OpenAMP</category>
+            <category>RPMsg</category>
+        </item>
         <item>
             <title><![CDATA[Désactiver les pinsyscalls sur OpenBSD]]></title>
             <link>https://blog.mrvym.dev/pinsyscall-on-openbsd</link>

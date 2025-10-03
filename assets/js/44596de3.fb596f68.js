@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmrvym_blog=self.webpackChunkmrvym_blog||[]).push([[8079],{9944:e=>{e.exports=JSON.parse('{"tag":{"label":"FreeRTOS","permalink":"/tags/free-rtos","allTagsPath":"/tags","count":1,"unlisted":true},"listMetadata":{"permalink":"/tags/free-rtos","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);

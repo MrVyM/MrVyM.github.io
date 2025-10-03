@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmrvym_blog=self.webpackChunkmrvym_blog||[]).push([[3789],{5882:a=>{a.exports=JSON.parse('{"tag":{"label":"OpenAMP","permalink":"/tags/open-amp","allTagsPath":"/tags","count":1,"unlisted":false},"listMetadata":{"permalink":"/tags/open-amp","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);

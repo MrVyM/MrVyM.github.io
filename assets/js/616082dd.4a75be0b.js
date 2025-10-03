@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmrvym_blog=self.webpackChunkmrvym_blog||[]).push([[3896],{1537:a=>{a.exports=JSON.parse('{"tag":{"label":"RPMsg","permalink":"/tags/rp-msg","allTagsPath":"/tags","count":1,"unlisted":false},"listMetadata":{"permalink":"/tags/rp-msg","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
