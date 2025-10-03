@@ -10,7 +10,7 @@ unlisted: true
 <!-- truncate -->
 Je travaille actuellement sur :
 - [ ] [Protect a program to Pkill](/protect-a-programm-to-pkill)
+- [ ] [Understanding and mastering inter-processor communication on STM32MP](/understanding-ipcc-on-stm32)
 - [ ] [Sleep from Python to Electronics](/sleep-from-python-to-electronics)
-- [ ] [Comprendre et utiliser la communication IPC sur STM32](/comprendre-et-utiliser-la-communication-ipc-sur-stm32)
 - [ ] [Comment marche le bus 1-Wire ?](/one-wire-protocol)
 - [ ] [How to code plot and chart in Docusaurus with MDX](/plot-chart-docusaurus-mdx)
