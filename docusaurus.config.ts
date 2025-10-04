@@ -3,6 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import { customReadingTime } from './src/ComputeReadingTime'
 import remarkMath from 'remark-math';
+import remarkDefList from 'remark-deflist';
 import rehypeKatex from 'rehype-katex';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
