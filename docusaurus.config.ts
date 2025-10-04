@@ -69,7 +69,10 @@ const config: Config = {
       '@docusaurus/plugin-content-blog',
       {
         path: 'blog',
-        remarkPlugins: [remarkMath],
+        remarkPlugins: [
+                remarkMath,
+                remarkDefList,
+        ],
         rehypePlugins: [rehypeKatex],
         feedOptions: {
           type: 'all',
