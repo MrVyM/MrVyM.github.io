@@ -80,7 +80,7 @@ const config: Config = {
           xslt: true,
           copyright: 'Copyright © ${new Date().getFullYear()} MrVym.dev.',
         },
-        editUrl: 'https://github.com/MrVyM/MrVyM.github.io/issues',
+        editUrl: 'https://github.com/MrVyM/MrVyM.github.io/',
         // Useful options to enforce blogging best practices
         onInlineTags: 'warn',
         onInlineAuthors: 'throw',
