@@ -1,0 +1,124 @@
+library ieee;
+    use ieee.std_logic_1164.all;
+    use ieee.numeric_std.all;
+
+entity enigma is
+    generic (
+        max : positive := 10
+    );
+    port (
+        clk    : in std_logic;
+        rst    : in std_logic;
+        prompt : in std_logic_vector(max - 1 downto 0);
+        step   : in std_logic;
+        output : out std_logic_vector(7 downto 0)
+    );
+end entity enigma;
+
+architecture rtl of enigma is
+
+    -- declaring an array type
+    type message is array (0 to 78) OF std_logic_vector(7 downto 0);
+
+    -- declaring state enumeration
+    type state_e is (SETUP_FIRST, VERIF_FIRST, SETUP_SECOND, VERIF_SECOND, SETUP_THIRD, VERIF_THIRD, DISPLAY_A, DISPLAY_B, DISPLAY_C);
+
+    -- current state
+    signal state : state_e := SETUP_FIRST;
+    signal next_state : state_e;
+
+    constant msg1 : message := ("01000111", "01001001", "01010011", "01010100", "01010010", "01000101", "01111011", "01111001", "01000010", "01110100", "01011001", "01010011", "01000010", "01110111", "01100010", "00110010", "01101100", "00110000", "01100011", "01101101", "01101100", "01110101", "01011010", "01010001", "01110000", "01000010", "01100011", "01000111", "01000110", "01110000", "01100011", "00110010", "01000110", "01110101", "01100100", "01000011", "01000010", "01110101", "01100010", "00110011", "01010010", "01111001", "01011010", "01010011", "01000010", "01101000", "01011010", "00110010", "00111001", "01110101", "01100001", "01010111", "01010101", "01100111", "01100001", "01001000", "01101100", "01110111", "01100010", "00110011", "01010010", "01101111", "01011010", "01011000", "01001010", "01110100", "01100001", "01011000", "01000110", "00110001", "01011010", "01010001", "01100010", "01101100", "01000100", "01110011", "00110100", "01100100", "01111101");
+    constant msg2 : message := ("01000111", "01001001", "01010011", "01010100", "01010010", "01000101", "01111011", "01000010", "01110011", "01011010", "01010011", "01000010", "01111010", "01100010", "00110010", "01110111", "01100111", "01011001", "01011000", "01010101", "01100111", "01100010", "01010111", "01101100", "01110011", "01100001", "01010111", "01010110", "00110001", "01001001", "01000111", "01010010", "01101100", "01100011", "01111001", "01000010", "01101111", "01100100", "01100011", "01001111", "01110000", "01011010", "01011000", "01001101", "01110011", "01000011", "01101110", "01001110", "01101100", "01100011", "01111001", "01000010", "01101000", "01100001", "01010111", "01111000", "01101100", "01100011", "01111001", "01000010", "01101011", "01011010", "01010011", "01000010", "01101110", "01110111", "00110110", "01101100", "01101000", "01100010", "01101110", "01010001", "01100111", "01100010", "01000011", "01100100", "01101100", "01100010", "01111101");
+    constant msg3 : message := ("01000111", "01001001", "01010011", "01010100", "01010010", "01000101", "01111011", "00110010", "00111001", "01110101", "01100100", "01000001", "01110000", "01010100", "01011010", "01011000", "01001101", "01100111", "01100011", "00110010", "01101100", "01101110", "01100010", "01101101", "01010110", "01111010", "01001100", "01000011", "01000010", "01101000", "01100010", "01001000", "01000010", "01101111", "01011001", "01010111", "01001010", "01101100", "01100100", "01000011", "01000010", "01101101", "01100010", "00110011", "01001010", "01110100", "01100001", "01010111", "01010010", "01101000", "01011001", "01101101", "01111000", "01101100", "01001001", "01000111", "01010110", "00110000", "01001001", "01001000", "01000010", "01111001", "01100010", "00110010", "01011010", "01110110", "01100010", "01101101", "01010001", "01100111", "01001111", "01110111", "01100110", "01100100", "01010011", "01100100", "00110011", "01000110", "01111101");
+
+    procedure inc(signal reg : inout integer) is begin
+        if reg < 78 then
+            reg <= reg + 1;
+        else
+            reg <= 0;
+        end if;
+    end procedure;
+
+    signal reg : integer := 0;
+
+    signal cond : boolean;
+
+begin
+    cond <= prompt(4 downto 2) = "111" and prompt(max - 1) = '1';
+
+    scheduler : process(clk, rst) is
+    begin
+        if rst = '1' then
+            state <= SETUP_FIRST;
+        elsif rising_edge(clk) then
+            state <= next_state;
+        end if;
+    end process;
+
+    -- Important: State flow control
+    fsm : process(state, step, cond, prompt) is
+    begin
+        case state is
+            when SETUP_FIRST =>
+                if step then
+                    next_state <= VERIF_FIRST;
+                end if;
+            when VERIF_FIRST =>
+                if prompt = "0110110001" then
+                    next_state <= SETUP_SECOND;
+                else
+                    next_state <= SETUP_FIRST;
+                end if;
+            when SETUP_SECOND =>
+                if step then
+                    next_state <= VERIF_SECOND;
+                end if;
+            when VERIF_SECOND =>
+                if prompt = "1000011100" then
+                    next_state <= SETUP_THIRD;
+                elsif cond then
+                    next_state <= DISPLAY_C;
+                else
+                    next_state <= SETUP_FIRST;
+                end if;
+            when SETUP_THIRD =>
+                if step then
+                    next_state <= VERIF_THIRD;
+                end if;
+            when VERIF_THIRD =>
+                if step then
+                    next_state <= DISPLAY_A;
+                else
+                    next_state <= SETUP_FIRST;
+                end if;
+            when others => next_state <= state;
+        end case;
+
+    end process;
+
+    -- Important: Output signal control
+    io : process(clk, rst) is
+    begin
+        if rst = '1' then
+            output <= "00000000";
+        elsif rising_edge(clk) then
+            case state is
+                when DISPLAY_A =>
+                    inc(reg);
+                    output <= msg1(reg);
+                when DISPLAY_B =>
+                    inc(reg);
+                    output <= msg3(reg);
+                when DISPLAY_C =>
+                    inc(reg);
+                    output <= msg2(reg);
+                when SETUP_FIRST =>
+                    output <= "00000000";
+                when others => null;
+            end case;
+        end if;
+
+    end process;
+
+end architecture;
+
