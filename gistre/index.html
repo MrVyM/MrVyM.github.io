@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="MrVyM.dev Atom Feed">
 <link rel="alternate" type="application/json" href="/feed.json" title="MrVyM.dev JSON Feed">
 <link rel="stylesheet" href="/katex/katex.min.css"><link rel="stylesheet" href="/assets/css/styles.02cc0320.css">
-<script src="/assets/js/runtime~main.eca006d7.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.983c0802.js" defer="defer"></script>
 <script src="/assets/js/main.92c51b1f.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -24,6 +24,9 @@ Le voleur a laissé une série d&#x27;indices que vous pouvez suivre pour retrou
 <p>Bon courage !</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="challenge-1">Challenge 1<a href="#challenge-1" class="hash-link" aria-label="Lien direct vers Challenge 1" title="Lien direct vers Challenge 1" translate="no">​</a></h2>
 <p>Un fichier étrange a été retrouvé. Saurez-vous trouver le premier indice ?</p>
+<blockquote>
+<p><a href="/CH1_strange_file">CH1 file</a></p>
+</blockquote>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="challenge-2">Challenge 2<a href="#challenge-2" class="hash-link" aria-label="Lien direct vers Challenge 2" title="Lien direct vers Challenge 2" translate="no">​</a></h2>
 <p>Un indice s&#x27;est caché dans la <a href="https://doc.gistre.fr/" target="_blank" rel="noopener noreferrer">Documentation GISTRE</a>.
 Fouillez le site !</p>
@@ -31,6 +34,9 @@ Fouillez le site !</p>
 <p>Il est fortement possible qu&#x27;un autre indice ait été laissé sur le <a href="https://blog.gistre.epita.fr/" target="_blank" rel="noopener noreferrer">blog GISTRE</a>. Un peu de lecture s&#x27;impose.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="challenge-4">Challenge 4<a href="#challenge-4" class="hash-link" aria-label="Lien direct vers Challenge 4" title="Lien direct vers Challenge 4" translate="no">​</a></h2>
 <details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Details</summary><div><div class="collapsibleContent_i85q"><p>Le voleur a fait tomber une carte en partant et a laissé un binaire sur une clé USB. Mettez le binaire sur la carte et connectez son port série. Peut-être découvrirez-vous quelque chose d&#x27;intéressant...</p></div></div></details>
+<blockquote>
+<p><a href="/assets/files/CH4_interpromo-4ba7a8748d934a754ef784ca766455b0.bin" target="_blank">CH4 file</a></p>
+</blockquote>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="challenge-5">Challenge 5<a href="#challenge-5" class="hash-link" aria-label="Lien direct vers Challenge 5" title="Lien direct vers Challenge 5" translate="no">​</a></h2>
 <details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Details</summary><div><div class="collapsibleContent_i85q"><p>Une nouvelle alternative au CAN, appelée CAN-GISTRE vient de sortir.
 Deux cartes de développement ont été volées et des données inconnues transitent. Nous avons réussi à dumper ce qui transite sur le bus CAN-GISTRE, il faudrait décoder tout ça pour reconstruire l’échange entre ces deux cartes. Une page de la documentation technique a été dérobée, nous espèrons qu’elle vous sera utile.</p><table><thead><tr><th style="text-align:left">Nom du champ</th><th style="text-align:left">Start</th><th style="text-align:left">ID</th><th style="text-align:left">RTR</th><th style="text-align:left">IDE</th><th style="text-align:left">RESERVED</th><th style="text-align:left">DLC</th><th style="text-align:left">[DATA0...DATA7]</th><th style="text-align:left">CRC</th><th style="text-align:left">CRC Delimiter</th><th style="text-align:left">ACK</th><th style="text-align:left">ACK Delimiter</th><th style="text-align:left">End of frame</th><th style="text-align:left">IFS</th></tr></thead><tbody><tr><td style="text-align:left">Nb bits</td><td style="text-align:left">1</td><td style="text-align:left">11</td><td style="text-align:left">1</td><td style="text-align:left">1</td><td style="text-align:left">1</td><td style="text-align:left">4</td><td style="text-align:left">...VARIABLE...</td><td style="text-align:left">15</td><td style="text-align:left">1</td><td style="text-align:left">1</td><td style="text-align:left">1</td><td style="text-align:left">7</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">Valeur*</td><td style="text-align:left">0</td><td style="text-align:left">X</td><td style="text-align:left">0</td><td style="text-align:left">0</td><td style="text-align:left">0</td><td style="text-align:left">X</td><td style="text-align:left">X</td><td style="text-align:left">X</td><td style="text-align:left">1</td><td style="text-align:left">0</td><td style="text-align:left">0</td><td style="text-align:left">1111111</td><td style="text-align:left">111</td></tr></tbody></table><div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">Champs Valeur</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  0 : Bit récessif</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  1 : Bit dominant</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  X : Défini par utilisateur</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div><p>(figure 1) Valeur des champs d&#x27;un trame GISTRE-CAN</p><p><strong>Description</strong></p><ul>
@@ -53,29 +59,53 @@ Taille variable de 0 à 15 octets</li>
 envoyé par ID par ordre décroissant. Le CRC peut être ignoré, seulement le
 contrôleur CAN-GISTRE doit s&#x27;en servir. La couche applicative doit en revanche
 utiliser à minima ID, le DLC et le DATA0-7.</p><p>Soit deux messages A et B encodé en ASCII:</p><p><strong>MESSAGE A:</strong></p><div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">{&#x27;id&#x27;: 1, &#x27;dlc&#x27;: 4, &#x27;data&#x27;: [83, 84, 82, 69], &#x27;crc&#x27;: 838}</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">0000000000010000100010100110101010001010010010001010000011010001101011111111111</span><br></span></code></pre></div></div><p>Nous obtenons: &quot;STRE&quot;</p><p><strong>MESSAGE B:</strong></p><div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">{&#x27;id&#x27;: 2, &#x27;dlc&#x27;: 2, &#x27;data&#x27;: [71, 73], &#x27;crc&#x27;: 929}</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">000000000010000001001000111010010010000011101000011011111111111</span><br></span></code></pre></div></div><p>Nous obtenons: &quot;GI&quot;</p><p>Le message reconstruit est le suivant en fonction de l&#x27;ID: &quot;GISTRE&quot;</p></div></div></details>
+<blockquote>
+<p><a href="/CH5_trame_can">CH5 file</a></p>
+</blockquote>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="challenge-6">Challenge 6<a href="#challenge-6" class="hash-link" aria-label="Lien direct vers Challenge 6" title="Lien direct vers Challenge 6" translate="no">​</a></h2>
 <p>Le voleur a laissé derrière lui une carte mystérieuse. Nous vous laissons l&#x27;examiner.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="challenge-7">Challenge 7<a href="#challenge-7" class="hash-link" aria-label="Lien direct vers Challenge 7" title="Lien direct vers Challenge 7" translate="no">​</a></h2>
 <p>Un étrange programme nous sort une seule et unique information, saurez-vous la trouver ? Il est pas mignon ce programme ?</p>
+<blockquote>
+<p><a href="/CH7_trial">CH7 file</a></p>
+</blockquote>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="challenge-8">Challenge 8<a href="#challenge-8" class="hash-link" aria-label="Lien direct vers Challenge 8" title="Lien direct vers Challenge 8" translate="no">​</a></h2>
 <p>Un ancien contact du LSE vous a dit qu’une partie de l’indice se trouve dans ce module kernel. Il n’y aurait qu’à l’installer…</p>
+<blockquote>
+<p><a href="/assets/files/CH8_hint-3058b768fb6b98e7bf3478ef36350280.ko" target="_blank">CH8 file</a></p>
+</blockquote>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="challenge-9">Challenge 9<a href="#challenge-9" class="hash-link" aria-label="Lien direct vers Challenge 9" title="Lien direct vers Challenge 9" translate="no">​</a></h2>
 <details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Details</summary><div><div class="collapsibleContent_i85q"><p>Vous avez retrouvé un carnet volé par la mascotte GISTRE, entre deux pages collées, vous parvenez a déchiffrer ces lignes:</p><div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">Lorsqu’on compile ces fichiers avec </span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">Alire (https://alire.ada.dev/),</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">il demande un mot de passe que </span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">le voleur à mis en place.</span><br></span></code></pre></div></div></div></div></details>
+<blockquote>
+<p><a href="/assets/files/CH9_split-b6275aba69481b43e38bc032bb7c868e.zip" target="_blank">CH9 file</a></p>
+</blockquote>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="challenge-10">Challenge 10<a href="#challenge-10" class="hash-link" aria-label="Lien direct vers Challenge 10" title="Lien direct vers Challenge 10" translate="no">​</a></h2>
 <details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Details</summary><div><div class="collapsibleContent_i85q"><p>Un contact au SEAL vous à donné une carte arduino et les plans d’un montage. Juste avant de disparaitre il vous a murmuré ces mots:
-“Le vert c’est pour les majuscules, la gauche c’est pour la lettre suivante”. Saurez vous retrouver cette partie du poème ?</p></div></div></details>
+“Le vert c’est pour les majuscules, la gauche c’est pour la lettre suivante”. Saurez vous retrouver cette partie du poème ?</p><p><img decoding="async" loading="lazy" alt="CH10 Image" src="/assets/images/CH10_Breadboard-2cf7ca78a372abddef2c36c71b3035e2.png" width="1755" height="1391" class="img_ev3q"></p></div></div></details>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="challenge-11">Challenge 11<a href="#challenge-11" class="hash-link" aria-label="Lien direct vers Challenge 11" title="Lien direct vers Challenge 11" translate="no">​</a></h2>
 <p>Ce binaire semble vérifier qu’un indice est le bon. Peut être il y a t’il moyen de retrouver l’indice à partir de la vérification ?</p>
+<blockquote>
+<p><a href="/CH11_re">CH11 file</a></p>
+</blockquote>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="challenge-12">Challenge 12<a href="#challenge-12" class="hash-link" aria-label="Lien direct vers Challenge 12" title="Lien direct vers Challenge 12" translate="no">​</a></h2>
 <details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Details</summary><div><div class="collapsibleContent_i85q"><p>Un collegue de TCOM vous annonce qu’il a inventé un nouveau composant, un
-cadenas electronique révolutionnaire. Vous ne connaissez pas le VHDL mais vous avez mesuré les différents signaux d’entrée. Saurez vous lui prouver que sa technologie est bonne pour la casse en lui montrant la valeur de sortie reconstituée ?</p></div></div></details>
+cadenas electronique révolutionnaire. Vous ne connaissez pas le VHDL mais vous avez mesuré les différents signaux d’entrée. Saurez vous lui prouver que sa technologie est bonne pour la casse en lui montrant la valeur de sortie reconstituée ?</p><p><img decoding="async" loading="lazy" alt="CH12 file" src="/assets/images/CH12_inputs-4caa6b2aadc410852a43adc5edb2eb60.png" width="1169" height="160" class="img_ev3q"></p></div></div></details>
+<blockquote>
+<p><a href="/CH12_Cadenas-VHDL">CH12 file</a></p>
+</blockquote>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="challenge-13">Challenge 13<a href="#challenge-13" class="hash-link" aria-label="Lien direct vers Challenge 13" title="Lien direct vers Challenge 13" translate="no">​</a></h2>
 <p>Encore un coup de ce satané voleur, ce binaire semble se moquer de nous. Je suis sûr que vous en viendrez à bout avec vos outils favoris.</p>
+<blockquote>
+<p><a href="/assets/files/CH13_FindMEEEE_GISTRE-0ced01f5ec6f623573e7859131d5b913.bin" target="_blank">CH13 file</a></p>
+</blockquote>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="bonus">Bonus<a href="#bonus" class="hash-link" aria-label="Lien direct vers Bonus" title="Lien direct vers Bonus" translate="no">​</a></h2>
 <details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Details</summary><div><div class="collapsibleContent_i85q"><p>La résolution de cette épreuve vous donnera accès instantanément au choix suivant:</p><ul>
 <li>1 indice choisi par le groupe</li>
 <li>2 indices aléatoires</li>
 </ul></div></div></details>
+<blockquote>
+<p><a href="/assets/files/Bonus_Alerte-00d41fb74408b98c6e5457bbae084d13.zip" target="_blank">Bonus</a></p>
+</blockquote>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="alerte-srs-">Alerte SRS !<a href="#alerte-srs-" class="hash-link" aria-label="Lien direct vers Alerte SRS !" title="Lien direct vers Alerte SRS !" translate="no">​</a></h3>
 <p>Vite les bleus,</p>
 <p>Notre espion Michel s&#x27;est introduit dans la salle serveur des SRS, pour essayer d&#x27;obtenir plus d&#x27;informations sur leur plan diabolique d&#x27;invasion complète de l&#x27;espace GISTRE au lab. Il a réussi à brancher discrètement une stm32 qui monitore l&#x27;utilisation hardware de leurs serveurs.</p>
