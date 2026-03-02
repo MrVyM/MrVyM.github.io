@@ -9,8 +9,8 @@ unlisted: true
 # Les articles en cours d'ecriture
 <!-- truncate -->
 Je travaille actuellement sur :
-- [ ] [Protect a program to Pkill](/protect-a-programm-to-pkill)
 - [ ] [Sleep from Python to Electronics](/sleep-from-python-to-electronics)
 - [ ] [Semaine Interpromo GISTRE26](/gistre)
+- [ ] [How to protect a program from SIGKILL](/protect-a-programm-from-sigkill)
 - [ ] [Comment marche le bus 1-Wire ?](/one-wire-protocol)
 - [ ] [How to code plot and chart in Docusaurus with MDX](/plot-chart-docusaurus-mdx)
